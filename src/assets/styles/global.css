@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ab66ff;
+  --color-secondary: #222;
+  --color-accent: #f3f3f3;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Set box-sizing globally */
+* {
+  box-sizing: border-box;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 60px;
+  color: var(--color-secondary);
+  font-weight: 600;
+  line-height: 72px;
+}
+h2 {
+  font-size: 40px;
+  color: var(--color-secondary);
+  font-weight: 500;
+  line-height: 48px;
+}
+
+p {
+  color: var(--color-secondary);
+  opacity: 0.8;
+}

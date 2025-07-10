@@ -1,0 +1,49 @@
+.container {
+  max-width: 1360px;
+  margin-inline: auto;
+  padding-inline: 12px;
+}
+.flx {
+  display: flex;
+  align-items: center;
+}
+.flbx {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tr {
+  transition: 300ms;
+}
+
+/* styles/globals.css or your global stylesheet */
+
+.medusa-scroll {
+  overflow-y: auto;
+  scrollbar-gutter: stable overlay; /* Prevents layout shift */
+  position: relative;
+}
+
+.medusa-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.medusa-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.medusa-scroll::-webkit-scrollbar-thumb {
+  background: #bfc5cb;
+  border-radius: 8px;
+}
+
+.medusa-scroll::-webkit-scrollbar-button {
+  display: none;
+}
