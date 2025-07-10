@@ -1,26 +1,27 @@
 import React from "react";
 import { cn } from "@/lib/utils";
+import { ArrowRight } from "@/assets/algo-icons";
 
 interface ButtonProps {
   children: React.ReactNode;
   className?: string;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "accent";
   size?: "xs" | "sm" | "md";
   role?: "button" | "a";
   onClick?: () => void;
 }
 
 const variantClasses = {
-  primary: "bg-secondary text-white",
+  primary: "bg-secondary text-white group",
   secondary:
-    "bg-blue-600/5 text-blue-900 dark:bg-white/10 dark:text-white border-blue-600/15 dark:border-blue-600/30",
+    "bg-blue-600/5 text-blue-900 dark:bg-white/10 dark:text-white border border-blue-600/15 dark:border-blue-600/30",
   accent:
-    "bg-blue-600/5 text-blue-900 dark:bg-white/10 dark:text-white border-blue-600/15 dark:border-blue-600/30",
+    "bg-blue-600/5 text-blue-900 dark:bg-white/10 dark:text-white border border-blue-600/15 dark:border-blue-600/30",
 };
 
 const sizeClasses = {
-  xs: "py-1.5 pr-3 pl-2.5 text-xs",
-  sm: "px-10 py-3 text-lg",
+  xs: "py-2 pr-3 pl-8 text-sm",
+  sm: "pl-10 pr-6 py-3 text-lg",
   md: "py-3 pr-5 pl-4",
 };
 
@@ -32,7 +33,7 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const commonClasses = cn(
-    "rounded-full",
+    "rounded-full inline-flex items-center justify-center gap-0 overflow-hidden transition-all duration-300",
     variantClasses[variant],
     sizeClasses[size],
     className
@@ -40,7 +41,21 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button className={commonClasses} {...props}>
-      {children}
+      <span
+        className={cn(
+          variant === "primary" &&
+            "transition-all duration-300 transform group-hover:-translate-x-2"
+        )}
+      >
+        {children}
+      </span>
+      {variant === "primary" && (
+        <ArrowRight
+          className="opacity-0 translate-x-[-0.25rem] transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1"
+          size={size==="xs"?4:5}
+          color="#fff"
+        />
+      )}
     </button>
   );
 };

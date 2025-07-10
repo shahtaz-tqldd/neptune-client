@@ -13,13 +13,13 @@ const Trending = () => {
           {products.map((product, index) => (
             <div
               key={product.id}
-              className={`absolute p-4 w-80 h-[400px] rounded-3xl shadow-xl bg-white transition-transform duration-300 hover:-translate-y-2
+              className={`absolute p-4 w-72 h-[380px] rounded-3xl shadow-xl bg-white transition-transform duration-300 hover:-translate-y-2
                 ${index === 0 ? "top-0 left-0 rotate-[-6deg]" : ""}
                 ${index === 1 ? "top-20 left-48 z-10 rotate-0" : ""}
-                ${index === 2 ? "top-40 left-96 rotate-[6deg]" : ""}
+                ${index === 2 ? "top-40 left-96 rotate-[6deg] z-10" : ""}
               `}
             >
-              <div className="w-full h-60 relative mb-4">
+              <div className="w-full h-56 relative mb-4">
                 <Image
                   src={product.image}
                   alt={product.name}

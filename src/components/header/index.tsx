@@ -1,6 +1,7 @@
-import { Cart } from "@/assets/algo-icons";
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
+import { Cart } from "@/assets/algo-icons";
+import IconButton from "@/components/buttons/icon-button";
 
 const navLinks = [
   { label: "Collections", href: "/collections" },
@@ -19,7 +20,7 @@ const Header = () => {
         </Link>
 
         {/* Navigation */}
-        <div className="flx gap-12">
+        <div className="flx gap-8">
           <nav className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <Link
@@ -32,12 +33,8 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Call to Action */}
-          <Link href="/shop">{<Cart size={6} />}</Link>
+          <IconButton icon={Cart}/>
         </div>
-
-        {/* Mobile menu icon (optional) */}
-        {/* Add a hamburger icon or drawer logic if needed */}
       </div>
     </header>
   );
