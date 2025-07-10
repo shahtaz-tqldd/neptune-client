@@ -3,11 +3,14 @@ import React, { ReactNode } from "react";
 
 interface NavigateButtonProps {
   children: ReactNode;
+  className?: string;
 }
 
-const NavigateButton = ({ children }: NavigateButtonProps) => {
+const NavigateButton = ({ children, className = "" }: NavigateButtonProps) => {
   return (
-    <button className="relative overflow-hidden group flex items-center gap-2 px-4 py-2 rounded-full -translate-x-2">
+    <button
+      className={`relative overflow-hidden group flex items-center gap-2 px-4 py-2 rounded-full -translate-x-2 ${className}`}
+    >
       <div className="absolute left-1.5 top-0 h-10 w-10 bg-[#DFF2EB] rounded-full z-0 transition-all duration-300 ease-in-out group-hover:w-full group-hover:h-full"></div>
 
       <div className="relative z-10 flex items-center gap-2">

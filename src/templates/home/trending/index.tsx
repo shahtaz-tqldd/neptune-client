@@ -1,3 +1,4 @@
+import NavigateButton from "@/components/buttons/navigate-button";
 import { DEMO_PRODUCTS } from "@/templates/products/demo-data";
 import Image from "next/image";
 import React from "react";
@@ -6,7 +7,7 @@ const Trending = () => {
   const products = DEMO_PRODUCTS.slice(0, 3); // Only show 3 products
 
   return (
-    <section className="container py-20">
+    <section className="container pt-20 pb-32">
       <div className="grid grid-cols-5 items-center">
         {/* Left: Product Cards */}
         <div className="col-span-3 relative h-[500px]">
@@ -35,13 +36,15 @@ const Trending = () => {
         </div>
 
         {/* Right: Title */}
-        <div className="col-span-2">
-          <h4 className="text-5xl md:text-6xl font-bold max-w-lg leading-tight">
+        <div className="col-span-2 space-y-8">
+          <p className="uppercase font-medium tracking-[2px]">pick the bestseller</p>
+          <h1 className="max-w-lg">
             Discover Our <span className="text-green-500">Trending</span> Shoes
-          </h4>
-          <p className="mt-6 text-2xl">
-            Our latest collection combines comfort and cutting-edge design. Step up your style game with these top picks loved by sneaker enthusiasts.
+          </h1>
+          <p className="text-2xl">
+            Our latest collection combines comfort and cutting-edge design. Step up your style game with these top picks.
           </p>
+          <NavigateButton className="mt-24">Explore More</NavigateButton>
         </div>
       </div>
     </section>

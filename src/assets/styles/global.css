@@ -2,7 +2,7 @@
 
 @theme {
   --color-primary: #ab66ff;
-  --color-secondary: #222;
+  --color-secondary: #393E46;
   --color-accent: #f3f3f3;
 }
 
@@ -27,14 +27,15 @@ a {
 h1 {
   font-size: 60px;
   color: var(--color-secondary);
-  font-weight: 600;
+  font-weight: 800;
   line-height: 72px;
 }
+
 h2 {
-  font-size: 40px;
+  font-size: 48px;
   color: var(--color-secondary);
-  font-weight: 500;
-  line-height: 48px;
+  font-weight: 700;
+  line-height: 56px;
 }
 
 p {

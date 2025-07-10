@@ -8,8 +8,11 @@ const nextConfig: NextConfig = {
       "images.fashiontiy.com",
       "www.number1shopping.com",
       "ng.jumia.is",
-      "static.dezeen.com",
-      "cdnimg.dreampairs.com",
+      "ecommercephotographyindia.com",
+      "i.pinimg.com",
+      "parspng.com",
+      "static.vecteezy.com",
+      "www.pngmart.com",
     ],
   },
 };
