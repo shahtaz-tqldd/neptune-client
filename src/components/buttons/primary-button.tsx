@@ -12,7 +12,7 @@ interface ButtonProps {
 }
 
 const variantClasses = {
-  primary: "bg-secondary text-white group",
+  primary: "bg-secondary text-white group/button",
   secondary:
     "bg-blue-600/5 text-blue-900 dark:bg-white/10 dark:text-white border border-blue-600/15 dark:border-blue-600/30",
   accent:
@@ -44,14 +44,14 @@ const Button: React.FC<ButtonProps> = ({
       <span
         className={cn(
           variant === "primary" &&
-            "transition-all duration-300 transform group-hover:-translate-x-2"
+            "transition-all duration-300 transform group-hover/button:-translate-x-2"
         )}
       >
         {children}
       </span>
       {variant === "primary" && (
         <ArrowRight
-          className={`opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1 ${size==="xs"?"translate-x-[-0.1rem]":"translate-x-[-0.25rem]"}`}
+          className={`opacity-0 transition-all duration-300 group-hover/button:opacity-100 group-hover/button:translate-x-1 ${size==="xs"?"translate-x-[-0.1rem]":"translate-x-[-0.25rem]"}`}
           size={size==="xs" ? 3 : 5}
           color="#fff"
         />

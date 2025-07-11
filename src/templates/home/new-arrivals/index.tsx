@@ -1,8 +1,11 @@
 import React from "react";
+
+import LinkButton from "@/components/buttons/link-button";
 import ProductCrad from "@/templates/products/product-card";
+
 import { DEMO_PRODUCTS } from "@/templates/products/demo-data";
 
-const BestSeller = () => {
+const NewArrivals = () => {
   const products = DEMO_PRODUCTS;
   return (
     <section className="py-20 bg-gray-50">
@@ -14,9 +17,12 @@ const BestSeller = () => {
             <ProductCrad product={product} key={index} />
           ))}
         </div>
+        <div className="text-center mt-16">
+          <LinkButton link="/products">View More</LinkButton>
+        </div>
       </div>
     </section>
   );
 };
 
-export default BestSeller;
+export default NewArrivals;

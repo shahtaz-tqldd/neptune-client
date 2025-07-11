@@ -1,19 +1,21 @@
 import React from "react";
 import Hero from "./hero";
-import BestSeller from "./best-seller";
+import NewArrivals from "./new-arrivals";
 import NewCollections from "./new-collections";
 import Trending from "./trending";
 import Details from "./details";
+import HotDeals from "./hot-deals";
 
 const Homepage = () => {
   return (
-    <div>
+    <React.Fragment>
       <Hero />
-      <BestSeller />
+      <NewArrivals />
       <NewCollections />
       <Trending />
       <Details />
-    </div>
+      <HotDeals />
+    </React.Fragment>
   );
 };
 

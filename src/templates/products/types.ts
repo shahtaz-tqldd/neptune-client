@@ -1,7 +1,10 @@
+import { StaticImageData } from "next/image";
+
 export interface ProductProps {
   id: number;
-  image: string;
+  image: string | StaticImageData;
   name: string;
-  discount: string;
   price: string;
+  discount?: string;
+  numReviews?: number;
 }

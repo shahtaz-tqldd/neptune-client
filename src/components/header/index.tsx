@@ -15,7 +15,7 @@ const Header = () => {
     <header className="w-full absolute top-0 z-50">
       <div className="container mx-auto px-6 py-8 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-xl font-black">
+        <Link href="/" className="text-xl font-bold text-teal-900/80">
           ShoeHub
         </Link>
 

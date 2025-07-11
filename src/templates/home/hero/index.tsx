@@ -2,11 +2,15 @@
 
 import React from "react";
 import Image from "next/image";
-import heroShoe from "@/assets/images/hero.webp";
+
 import Button from "@/components/buttons/primary-button";
-import { Star } from "@/assets/algo-icons";
+import LinkButton from "@/components/buttons/link-button";
+import HeroProductCard from "./hero-product-card";
+
+import { HERO_PRODUCT } from "./demo-data";
 
 const Hero = () => {
+  const product_data = HERO_PRODUCT;
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#DFF2EB] via-[#B9E5E8] to-[#DFF2EB]">
       <div className="container mx-auto px-6 pb-16 pt-36 flex flex-wrap md:flex-nowrap gap-12">
@@ -16,56 +20,29 @@ const Hero = () => {
             Unlace the Ordinary,{" "}
             <span className="text-green-500">Lace Up the Hype.</span>
           </h1>
-          <p className="text-xl text-zinc-600">
+          <p className="text-xl">
             Curated kicks crafted to turn heads. From daily hustle to weekend
             chill — wear what feels like you.
           </p>
 
-          <div className="flex gap-8 mt-16">
+          <div className="flx gap-8 mt-16">
             <Button>Shop Now</Button>
-            <button className="text-black/90 font-semibold text-lg underline underline-offset-4">
-              Explore shops
-            </button>
+            <LinkButton>Explore Collection</LinkButton>
           </div>
         </div>
 
         {/* Right: Shoe Image */}
-        <div className="relative">
-          {/* Red blurred background */}
-
+        <div className="relative group">
           {/* Product Card */}
-          <div className="absolute top-4 right-4 -translate-x-20 bg-white/80 backdrop-blur-xl rounded-3xl p-5 shadow-lg border border-white/30 w-72 transition-all duration-300">
-            <h5 className="font-bold text-lg text-gray-800 mb-2">
-              Air Zoom HyperPulse
-            </h5>
-            {/* Rating */}
-            <div className="flex items-center gap-0.5 mb-3">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={3.5} className="fill-[#1C274C]" />
-              ))}
-              <span className="text-sm text-gray-500 ml-1">(120 reviews)</span>
-            </div>
-            {/* Price */}
-            <div className="text-2xl font-extrabold text-gray-900 mb-4">
-              $189.00
-            </div>
-            {/* Color Options */}
-            <div className="flex gap-2 mb-5">
-              <div className="w-5 h-5 rounded-full bg-red-500 border-3 border-white"></div>
-              <div className="w-5 h-5 rounded-full bg-green-500 border-3 border-white"></div>
-              <div className="w-5 h-5 rounded-full bg-blue-500 border-3 border-white"></div>
-            </div>
-            {/* Buttons */}
-            <div className="flex gap-3">
-              <Button size="xs">See Product</Button>
-            </div>
-          </div>
-
+          <HeroProductCard
+            className="absolute top-8 right-4 -translate-x-16 group-hover:-translate-x-[72px] group-hover:-translate-y-2"
+            product={product_data}
+          />
           <Image
-            src={heroShoe}
+            src={product_data?.image}
             alt="Cool Sneakers"
-            className="h-[500px] w-[500px] object-contain drop-shadow-[0_50px_25px_rgba(0,0,0,0.5)] translate-x-36 pointer-events-none"
-            // priority
+            className="h-[500px] w-[500px] translate-x-36 group-hover:rotate-[5deg] group-hover:translate-x-[152px] group-hover:translate-y-6 tr object-contain drop-shadow-[0_50px_25px_rgba(0,0,0,0.5)] pointer-events-none"
+            priority
           />
         </div>
       </div>

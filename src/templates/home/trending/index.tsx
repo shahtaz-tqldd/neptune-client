@@ -1,20 +1,20 @@
+import React from "react";
+import Image from "next/image";
 import NavigateButton from "@/components/buttons/navigate-button";
 import { DEMO_PRODUCTS } from "@/templates/products/demo-data";
-import Image from "next/image";
-import React from "react";
 
 const Trending = () => {
-  const products = DEMO_PRODUCTS.slice(0, 3); // Only show 3 products
+  const products = DEMO_PRODUCTS.slice(0, 3);
 
   return (
-    <section className="container pt-20 pb-32">
+    <section className="container pt-24 pb-36">
       <div className="grid grid-cols-5 items-center">
         {/* Left: Product Cards */}
         <div className="col-span-3 relative h-[500px]">
           {products.map((product, index) => (
             <div
               key={product.id}
-              className={`absolute p-4 w-72 h-[380px] rounded-3xl shadow-xl bg-white transition-transform duration-300 hover:-translate-y-2
+              className={`cursor-pointer absolute p-4 w-72 h-[380px] rounded-3xl shadow-xl bg-white transition-transform duration-300 hover:-translate-y-2
                 ${index === 0 ? "top-0 left-0 rotate-[-6deg]" : ""}
                 ${index === 1 ? "top-20 left-48 z-10 rotate-0" : ""}
                 ${index === 2 ? "top-40 left-96 rotate-[6deg] z-10" : ""}

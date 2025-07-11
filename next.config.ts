@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
       "parspng.com",
       "static.vecteezy.com",
       "www.pngmart.com",
+      "png.pngtree.com",
+      "file.aiquickdraw.com"
     ],
   },
 };
