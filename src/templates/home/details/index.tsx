@@ -53,13 +53,13 @@ const Details = () => {
           </p>
           {/* SVG Line - from bottom to top */}
           <svg
-            className="absolute top-28 left-0 transform  rotate-x-180"
+            className="absolute top-28 -translate-x-1/4 transform"
             width="200"
-            height="80"
-            viewBox="0 0 200 80"
+            height="200"
+            viewBox="0 0 200 200"
           >
             <path
-              d="M 100 80 L 100 40 Q 100 30 110 30 L 140 30 Q 150 30 150 20 L 150 0"
+              d="M 100 120 L 100 40 Q 100 30 110 30 L 140 30 Q 150 30 150 20 L 150 0"
               stroke="rgb(148 163 184)"
               strokeWidth="2"
               fill="none"
@@ -79,13 +79,13 @@ const Details = () => {
         <div className="bg-white rounded-3xl p-6 flex flex-col items-center gap-6 relative group justify-between">
           {/* Text */}
           <svg
-            className="absolute top-28 left-0 transform  rotate-90 rotate-x-180"
+            className="absolute top-28 left-0 transform"
             width="200"
-            height="80"
-            viewBox="0 0 200 80"
+            height="200"
+            viewBox="0 0 200 200"
           >
             <path
-              d="M 100 80 L 100 40 Q 100 30 110 30 L 140 30"
+              d="M 100 200 L 100 40 Q 100 30 110 30 L 180 30"
               stroke="rgb(148 163 184)"
               strokeWidth="2"
               fill="none"

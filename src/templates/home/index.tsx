@@ -3,7 +3,6 @@ import Hero from "./hero";
 import BestSeller from "./best-seller";
 import NewCollections from "./new-collections";
 import Trending from "./trending";
-import Suggestion from "./suggestion";
 import Details from "./details";
 
 const Homepage = () => {
@@ -13,7 +12,6 @@ const Homepage = () => {
       <BestSeller />
       <NewCollections />
       <Trending />
-      {/* <Suggestion /> */}
       <Details />
     </div>
   );
