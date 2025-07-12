@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
 import Button from "@/components/buttons/primary-button";
+import Link from "next/link";
+import { productName } from "@/lib/sanitize";
 
 const HOT_DEALS = [
   {
@@ -99,11 +101,13 @@ const HotDeals = () => {
                   ).toFixed(0)}
                   %
                 </span>
-                <h3 className="text-xl font-semibold text-black/80 my-4">
-                  {product.name}
-                </h3>
+                <h4 className="my-4">{product.name}</h4>
                 <div className="flex items-end gap-4 mb-8">
-                  <span className={`text-3xl font-bold ${index % 2 === 0 ? "text-indigo-900" : "text-teal-900"}`}>
+                  <span
+                    className={`text-3xl font-bold ${
+                      index % 2 === 0 ? "text-indigo-900" : "text-teal-900"
+                    }`}
+                  >
                     ${product.discountPrice?.toFixed(2)}
                   </span>
                   <span className="line-through text-gray-500 -translate-y-1">
@@ -116,7 +120,9 @@ const HotDeals = () => {
                     {formatTime(timers[index])}
                   </span>
                 </div>
-                <Button size="xs">Buy Now</Button>
+                <Link href={`/products/${productName(product.name)}`}>
+                  <Button size="xs">Buy Now</Button>
+                </Link>
               </div>
             </div>
           ))}

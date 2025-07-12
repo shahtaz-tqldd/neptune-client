@@ -21,7 +21,7 @@ const Footer = () => {
 
         {/* Quick Links */}
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-black/60 mb-4">Quick Links</h3>
+          <h4 className="text-lg font-semibold text-black/60 mb-4">Quick Links</h4>
           <ul className="space-y-2 text-gray-400">
             <li>
               <a href="#" className="hover:text-green-500 transition-all">
@@ -48,7 +48,7 @@ const Footer = () => {
 
         {/* Important Links */}
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-black/60 mb-4">Important Links</h3>
+          <h4 className="text-lg font-semibold text-black/60 mb-4">Important Links</h4>
           <ul className="space-y-2 text-gray-400">
             <li>
               <a href="#" className="hover:text-green-500 transition-all">
@@ -75,7 +75,7 @@ const Footer = () => {
 
         {/* Contact & Social */}
         <div className="max-w-md">
-          <h3 className="text-lg font-semibold text-black/60 mb-4">Contact Us</h3>
+          <h4 className="text-lg font-semibold text-black/60 mb-4">Contact Us</h4>
           <p className="text-sm text-gray-400 mb-2">
             📍 123 Main Street, Dhaka, Bangladesh
           </p>
@@ -91,7 +91,7 @@ const Footer = () => {
               info@example.com
             </a>
           </p>
-          <div className="flex gap-1">
+          <div className="flex -ml-3.5">
             <IconButton icon={Facebook} />
             <IconButton icon={WhatsApp} />
             <IconButton icon={Instagram} />

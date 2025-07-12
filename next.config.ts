@@ -14,7 +14,11 @@ const nextConfig: NextConfig = {
       "static.vecteezy.com",
       "www.pngmart.com",
       "png.pngtree.com",
-      "file.aiquickdraw.com"
+      "file.aiquickdraw.com",
+      "media.istockphoto.com",
+      "static-01.daraz.com.bd",
+      "toffpark.com",
+      "cdn.thewirecutter.com"
     ],
   },
 };

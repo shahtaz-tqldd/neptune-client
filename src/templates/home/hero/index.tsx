@@ -8,6 +8,7 @@ import LinkButton from "@/components/buttons/link-button";
 import HeroProductCard from "./hero-product-card";
 
 import { HERO_PRODUCT } from "./demo-data";
+import Link from "next/link";
 
 const Hero = () => {
   const product_data = HERO_PRODUCT;
@@ -26,7 +27,9 @@ const Hero = () => {
           </p>
 
           <div className="flx gap-8 mt-16">
-            <Button>Shop Now</Button>
+            <Link href="/shop">
+              <Button>Shop Now</Button>
+            </Link>
             <LinkButton>Explore Collection</LinkButton>
           </div>
         </div>

@@ -11,9 +11,9 @@ const font = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Neptune | Social Media Agency",
+  title: "ShoeHub | Online Shoes Store",
   description:
-    "Neptune is a social media marketing agency helps to launch new businesses and leverage the marketing.",
+    "ShoeHub is a online shoe store for selling sneaker, modern and aesthetic shoes.",
 };
 
 export default function RootLayout({

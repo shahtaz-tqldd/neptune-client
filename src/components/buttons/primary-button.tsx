@@ -16,7 +16,7 @@ const variantClasses = {
   secondary:
     "bg-blue-600/5 text-blue-900 dark:bg-white/10 dark:text-white border border-blue-600/15 dark:border-blue-600/30",
   accent:
-    "bg-blue-600/5 text-blue-900 dark:bg-white/10 dark:text-white border border-blue-600/15 dark:border-blue-600/30",
+    "bg-red-500/10 text-red-600 font-semibold",
 };
 
 const sizeClasses = {

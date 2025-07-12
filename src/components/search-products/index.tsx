@@ -21,7 +21,7 @@ export default function SearchProducts() {
         fixed left-8 z-50
         flx gap-1.5 border-t-2 border-yellow-400
         transition-all duration-500 ease-in-out text-black/75
-        bg-white py-3 pr-5 pl-3 rounded-full shadow-xl font-medium
+        bg-white/80 backdrop-blur-sm py-3 pr-5 pl-3 rounded-full shadow-xl font-medium
         ${
           visible
             ? "bottom-6 translate-y-0 opacity-100"
@@ -30,7 +30,7 @@ export default function SearchProducts() {
       `}
     >
       <SearchIcon size={5.5} className="translate-y-0.5" />
-      Search Products
+      Search Shoes
     </button>
   );
 }

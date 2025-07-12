@@ -174,15 +174,43 @@ export const SearchIcon = ({
       <path
         d="M17 17L21 21"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
         stroke={color}
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
+    </svg>
+  );
+};
+
+export const CheckIcon = ({
+  size = 8,
+  className,
+  color = "#1C274C",
+}: IconProps) => {
+  return (
+    <svg
+      width={size * 4}
+      height={size * 4}
+      viewBox="0 0 18 30"
+      fill="none"
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="Interface / Check_Big">
+        <path
+          id="Vector"
+          d="M4 12L8.94975 16.9497L19.5572 6.34326"
+          stroke={color}
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
     </svg>
   );
 };

@@ -23,9 +23,9 @@ const NewCollections = () => {
               height={800}
             />
             <div className="absolute bottom-6 left-6 bg-white/10 backdrop-blur px-6 py-4 rounded-3xl shadow-lg max-w-[50%] space-y-2">
-              <h3 className="text-2xl font-bold text-green-900">
+              <h5 className="text-2xl font-bold text-green-900">
                 {collections_data[0]?.name}
-              </h3>
+              </h5>
               <p>{collections_data[0]?.description}</p>
               <NavigateButton className="mt-4">Explore Urban</NavigateButton>
             </div>
@@ -41,9 +41,9 @@ const NewCollections = () => {
               height={800}
             />
             <div className="absolute bottom-6 right-6 bg-white/10 backdrop-blur px-6 py-4 rounded-3xl shadow-lg max-w-[50%] space-y-2">
-              <h3 className="text-2xl font-bold text-orange-900">
+              <h5 className="text-2xl font-bold text-orange-900">
                 {collections_data[0]?.name}
-              </h3>
+              </h5>
               <p>{collections_data[1]?.description}</p>
               <NavigateButton className="mt-4">Explore Trail</NavigateButton>
             </div>
