@@ -6,38 +6,18 @@ import clsx from "clsx";
 import Button from "@/components/buttons/primary-button";
 import Link from "next/link";
 import { productName } from "@/lib/sanitize";
+import { DEMO_PRODUCTS } from "@/templates/products/demo-data";
+import { formatTime } from "@/lib/date-time";
+import { ProductProps } from "@/templates/products/types";
 
-const HOT_DEALS = [
-  {
-    name: "X Shoe New Hope",
-    img_url:
-      "https://png.pngtree.com/png-clipart/20240703/original/pngtree-running-shoes-with-a-cushioned-sole-and-laces-tied-png-image_15473358.png",
-    price: 120,
-    discountPrice: 89,
-    offerEndsIn: 3600, // in seconds
-  },
-  {
-    name: "Green Turbo Sprint",
-    img_url:
-      "https://png.pngtree.com/png-vector/20230407/ourmid/pngtree-green-transparent-sports-shoes-png-image_6687298.png",
-    price: 100,
-    discountPrice: 74,
-    offerEndsIn: 5400, // in seconds
-  },
-];
-
-function formatTime(seconds: number) {
-  const h = String(Math.floor(seconds / 3600)).padStart(2, "0");
-  const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
-  const s = String(seconds % 60).padStart(2, "0");
-  return `${h}:${m}:${s}`;
-}
 
 const HotDeals = () => {
-  const [timers, setTimers] = useState(
-    HOT_DEALS.map((deal) => deal.offerEndsIn)
+  
+  const HOT_DEALS: ProductProps[] = DEMO_PRODUCTS.filter((p) => p.hot_deals);
+  const [timers, setTimers] = useState<number[]>(
+    HOT_DEALS.map((deal) => Number(deal.offerEndsIn) || 0)
   );
-
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setTimers((prev) => prev.map((t) => (t > 0 ? t - 1 : 0)));
@@ -83,7 +63,7 @@ const HotDeals = () => {
                   ></div>
                 </div>
                 <Image
-                  src={product.img_url}
+                  src={product.image}
                   alt={product.name}
                   width={400}
                   height={400}
@@ -95,11 +75,7 @@ const HotDeals = () => {
               <div className="flex-1">
                 <span className="text-sm bg-yellow-200 text-yellow-900 font-medium px-3 py-1.5 rounded-full">
                   Save{" "}
-                  {(
-                    ((product.price - product.discountPrice) / product.price) *
-                    100
-                  ).toFixed(0)}
-                  %
+                  {product.discount}
                 </span>
                 <h4 className="my-4">{product.name}</h4>
                 <div className="flex items-end gap-4 mb-8">
@@ -108,10 +84,10 @@ const HotDeals = () => {
                       index % 2 === 0 ? "text-indigo-900" : "text-teal-900"
                     }`}
                   >
-                    ${product.discountPrice?.toFixed(2)}
+                    {product.discountPrice}
                   </span>
                   <span className="line-through text-gray-500 -translate-y-1">
-                    ${product.price?.toFixed(2)}
+                    {product.price}
                   </span>
                 </div>
                 <div className="text-gray-600 text-lg mb-4">

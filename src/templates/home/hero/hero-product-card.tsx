@@ -3,13 +3,16 @@ import Button from "@/components/buttons/primary-button";
 
 import { Star } from "@/assets/algo-icons";
 import type { ProductProps } from "@/templates/products/types";
+import Link from "next/link";
+import { productName } from "@/lib/sanitize";
 
 interface HeroProductCardProps {
   className: string;
-  product: ProductProps;
+  product: ProductProps| undefined;
 }
 
 const HeroProductCard = ({ className, product }: HeroProductCardProps) => {
+  if (!product) return null;
   return (
     <div
       className={`bg-white/80 backdrop-blur-xl rounded-3xl p-5 shadow-lg w-72 tr ${className}`}
@@ -36,7 +39,9 @@ const HeroProductCard = ({ className, product }: HeroProductCardProps) => {
       </div>
       {/* Buttons */}
       <div className="flex gap-3">
-        <Button size="xs">See Product</Button>
+        <Link href={`/products/${productName(product.name)}`}>
+          <Button size="xs">See Product</Button>
+        </Link>
       </div>
     </div>
   );

@@ -7,11 +7,13 @@ import Button from "@/components/buttons/primary-button";
 import LinkButton from "@/components/buttons/link-button";
 import HeroProductCard from "./hero-product-card";
 
-import { HERO_PRODUCT } from "./demo-data";
 import Link from "next/link";
+import { DEMO_PRODUCTS } from "@/templates/products/demo-data";
+import type { ProductProps } from "@/templates/products/types";
 
 const Hero = () => {
-  const product_data = HERO_PRODUCT;
+  const product_data: ProductProps | undefined = DEMO_PRODUCTS?.find(p => p.is_hero_product);
+
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#DFF2EB] via-[#B9E5E8] to-[#DFF2EB]">
       <div className="container mx-auto px-6 pb-16 pt-36 flex flex-wrap md:flex-nowrap gap-12">
@@ -42,8 +44,8 @@ const Hero = () => {
             product={product_data}
           />
           <Image
-            src={product_data?.image}
-            alt="Cool Sneakers"
+            src={product_data?.image || "/placeholder.png"}
+            alt={product_data?.name || "Product image"}
             className="h-[500px] w-[500px] translate-x-36 group-hover:rotate-[5deg] group-hover:translate-x-[152px] group-hover:translate-y-6 tr object-contain drop-shadow-[0_50px_25px_rgba(0,0,0,0.5)] pointer-events-none"
             priority
           />
