@@ -5,7 +5,7 @@ import { ArrowRight } from "@/assets/algo-icons";
 interface ButtonProps {
   children: React.ReactNode;
   className?: string;
-  variant?: "primary" | "secondary" | "accent";
+  variant?: "primary" | "secondary" | "accent" | 'rubix';
   size?: "xs" | "sm" | "md";
   role?: "button" | "a";
   onClick?: () => void;
@@ -16,7 +16,9 @@ const variantClasses = {
   secondary:
     "bg-blue-600/5 text-blue-900 dark:bg-white/10 dark:text-white border border-blue-600/15 dark:border-blue-600/30",
   accent:
-    "bg-red-500/10 text-red-600 font-semibold",
+    "bg-green-700 text-white font-semibold",
+  rubix:
+    "bg-green-700/10 text-green-600 font-semibold",
 };
 
 const sizeClasses = {
@@ -33,7 +35,7 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const commonClasses = cn(
-    "rounded-full inline-flex items-center justify-center gap-0 overflow-hidden transition-all duration-300",
+    "rounded-full inline-flex items-center justify-center gap-0 overflow-hidden tr",
     variantClasses[variant],
     sizeClasses[size],
     className

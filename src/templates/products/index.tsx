@@ -53,7 +53,7 @@ const ProductPage = () => {
             </p>
           </div>
           <div className="flx gap-4 mt-16">
-            <Button className="px-7" size="sm" variant="accent">
+            <Button className="px-7" size="sm" variant="rubix">
               Add to Cart
             </Button>
             <Link href="/checkout">
