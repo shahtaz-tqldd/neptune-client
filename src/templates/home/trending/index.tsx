@@ -6,7 +6,7 @@ import TrendingProductCard from "./trending-product-card";
 import { DEMO_PRODUCTS } from "@/templates/products/demo-data";
 
 const Trending = () => {
-  const products = DEMO_PRODUCTS.slice(0, 3);
+  const products = DEMO_PRODUCTS.slice(5, 8);
 
   return (
     <section className="container pt-24 pb-36">

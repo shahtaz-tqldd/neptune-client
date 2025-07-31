@@ -163,3 +163,13 @@ export const DEMO_PRODUCTS = [
     numReviews: 120,
   },
 ];
+
+export const DEMO_SIZES = ["6", "7", "8", "9", "10", "11"];
+export const DEMO_COLORS = [
+  { name: "Black", value: "#000000" },
+  { name: "White", value: "#ffffff" },
+  { name: "Red", value: "#ef4444" },
+  { name: "Blue", value: "#3b82f6" },
+  { name: "Green", value: "#10b981" },
+  { name: "Yellow", value: "#f59e0b" },
+];

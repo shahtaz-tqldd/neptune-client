@@ -1,113 +1,235 @@
-"use client";
 
-import React from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Slider } from "@/components/ui/slider";
-import {
-  Collapsible,
-  CollapsibleTrigger,
-  CollapsibleContent,
-} from "@/components/ui/collapsible";
+import { RangeSlider } from "@/components/ui/slider";
 import Button from "@/components/buttons/primary-button";
+import { FilterProps, FilterState } from "../types";
+import { DEMO_COLORS, DEMO_SIZES } from "@/templates/products/demo-data";
 
-const brands = ["Nike", "Adidas", "Puma", "Reebok"];
-const sizes = ["6", "7", "8", "9", "10", "11"];
-const colors = ["Black", "White", "Red", "Blue"];
+const sizes = DEMO_SIZES
+const colors = DEMO_COLORS
 
-const Filter = () => {
-  const [priceRange, setPriceRange] = React.useState([30]);
+const Filter: React.FC<FilterProps> = ({
+  onFiltersChange,
+  onApplyFilters,
+  filters,
+  setFilters,
+  defaultFilters,
+  initialFilters
+}) => {
+  // Track if filters have been modified from initial state
+  const [hasUnappliedChanges, setHasUnappliedChanges] = useState(false);
+  const [lastAppliedFilters, setLastAppliedFilters] = useState<FilterState>({
+    ...defaultFilters,
+    ...initialFilters,
+  });
+
+  // Check if current filters are different from default
+  const hasActiveFilters = useMemo(() => {
+    return (
+      filters.categories.length > 0 ||
+      filters.sizes.length > 0 ||
+      filters.colors.length > 0 ||
+      filters.priceRange[0] !== defaultFilters.priceRange[0] ||
+      filters.priceRange[1] !== defaultFilters.priceRange[1]
+    );
+  }, [filters, defaultFilters]);
+
+  // Check if current filters are different from last applied
+  const filtersChanged = useMemo(() => {
+    return JSON.stringify(filters) !== JSON.stringify(lastAppliedFilters);
+  }, [filters, lastAppliedFilters]);
+
+  // Update filters and notify parent
+  const updateFilters = useCallback((newFilters: FilterState) => {
+    setFilters(newFilters);
+    setHasUnappliedChanges(true);
+    onFiltersChange?.(newFilters);
+  }, [onFiltersChange, setFilters]);
+
+  // Handle category checkbox changes
+  const handleCategoryChange = useCallback((category: string, checked: boolean) => {
+    const newCategories = checked
+      ? [...filters.categories, category]
+      : filters.categories.filter(c => c !== category);
+    
+    updateFilters({ ...filters, categories: newCategories });
+  }, [filters, updateFilters]);
+
+  // Handle price range changes
+  const handlePriceRangeChange = useCallback((minVal: number, maxVal: number) => {
+    updateFilters({ ...filters, priceRange: [minVal, maxVal] });
+  }, [filters, updateFilters]);
+
+  // Handle size selection
+  const handleSizeToggle = useCallback((size: string) => {
+    const newSizes = filters.sizes.includes(size)
+      ? filters.sizes.filter(s => s !== size)
+      : [...filters.sizes, size];
+    
+    updateFilters({ ...filters, sizes: newSizes });
+  }, [filters, updateFilters]);
+
+  // Handle color selection
+  const handleColorToggle = useCallback((colorName: string) => {
+    const newColors = filters.colors.includes(colorName)
+      ? filters.colors.filter(c => c !== colorName)
+      : [...filters.colors, colorName];
+    
+    updateFilters({ ...filters, colors: newColors });
+  }, [filters, updateFilters]);
+
+  // Apply filters
+  const handleApplyFilters = useCallback(() => {
+    setLastAppliedFilters(filters);
+    setHasUnappliedChanges(false);
+    onApplyFilters?.(filters);
+  }, [filters, onApplyFilters]);
+
+  // Clear all filters
+  const handleClearAll = useCallback(() => {
+    const clearedFilters = { ...defaultFilters };
+    setFilters(clearedFilters);
+    setLastAppliedFilters(clearedFilters);
+    setHasUnappliedChanges(false);
+    onFiltersChange?.(clearedFilters);
+    onApplyFilters?.(clearedFilters);
+  }, [onFiltersChange, onApplyFilters, defaultFilters, setFilters]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
+      {/* Category */}
       <div>
-        <h4 className="mb-2">Category</h4>
-        <div className="space-y-2">
+        <h4 className="mb-3 font-medium text-gray-900">Category</h4>
+        <div className="space-y-3">
           {["Men", "Women", "Kids"].map((category) => (
             <label
               key={category}
               htmlFor={category}
-              className="flex items-center gap-2 cursor-pointer text-sm"
+              className="flex items-center gap-3 cursor-pointer text-sm hover:text-gray-900 transition-colors"
             >
-              <Checkbox id={category} />
-              {category}
+              <Checkbox 
+                id={category}
+                checked={filters.categories.includes(category)}
+                onCheckedChange={(checked) => handleCategoryChange(category, !!checked)}
+              />
+              <span className={filters.categories.includes(category) ? 'font-medium' : ''}>
+                {category}
+              </span>
             </label>
           ))}
         </div>
       </div>
 
-      {/* Brand */}
-      {/* <Collapsible>
-        <CollapsibleTrigger asChild>
-          <div className="flbx">
-            <h4>Brand</h4>
-            <button className="h-8 w-8 bg-gray-100 rounded-full center text-xl">
-              +
-            </button>
-          </div>
-        </CollapsibleTrigger>
-        <CollapsibleContent className="space-y-2 mt-2">
-          {brands.map((brand) => (
-            <label
-              key={brand}
-              htmlFor={brand}
-              className="flex items-center gap-2 cursor-pointer text-sm"
-            >
-              <Checkbox id={brand} />
-              {brand}
-            </label>
-          ))}
-        </CollapsibleContent>
-      </Collapsible>
- */}
       {/* Price Range */}
       <div>
-        <h4 className="mb-2">Price Range</h4>
-        <Slider
-          defaultValue={[30]}
-          max={200}
-          step={10}
-          value={priceRange}
-          onValueChange={setPriceRange}
+        <h4 className="mb-3 font-medium text-gray-900">Price Range</h4>
+        <RangeSlider
+          min={0}
+          max={100}
+          minVal={filters.priceRange[0]}
+          maxVal={filters.priceRange[1]}
+          onChange={handlePriceRangeChange}
+          step={1}
+          formatLabel={(value) => `$${value}`}
+          className="mb-3"
         />
-        <div className="text-xs text-muted-foreground mt-1">
-          Up to ${priceRange[0]}
+        <div className="text-sm text-gray-600 font-medium mt-8">
+          ${filters.priceRange[0]}.00 - ${filters.priceRange[1]}.00
         </div>
       </div>
 
       {/* Size */}
       <div>
-        <h4 className="mb-2">Size</h4>
+        <h4 className="mb-3 font-medium text-gray-900">Size</h4>
         <div className="flex flex-wrap gap-2">
           {sizes.map((size) => (
             <button
               key={size}
-              className="bg-gray-100 h-8 w-8 center rounded-full"
+              onClick={() => handleSizeToggle(size)}
+              className={`h-10 w-10 rounded-full border-2 text-sm font-medium transition-all duration-200 ${
+                filters.sizes.includes(size)
+                  ? 'bg-blue-500 text-white border-blue-500 shadow-md'
+                  : 'bg-gray-50 text-gray-700 border-gray-200 hover:border-gray-300 hover:bg-gray-100'
+              }`}
             >
               {size}
             </button>
           ))}
         </div>
+        {filters.sizes.length > 0 && (
+          <div className="text-sm text-gray-600 font-medium mt-4">
+            Selected: {filters.sizes.join(', ')}
+          </div>
+        )}
       </div>
 
       {/* Color */}
       <div>
-        <h4 className="mb-2">Color</h4>
-        <div className="flex flex-wrap gap-2">
+        <h4 className="mb-3 font-medium text-gray-900">Color</h4>
+        <div className="flex flex-wrap gap-3">
           {colors.map((color) => (
-            <span
-              key={color}
-              title={color}
-              className={`w-6 h-6 rounded-full border border-gray-300 cursor-pointer`}
-              style={{ backgroundColor: color.toLowerCase() }}
-            />
+            <button
+              key={color.name}
+              onClick={() => handleColorToggle(color.name)}
+              title={color.name}
+              className={`w-8 h-8 rounded-full border-2 cursor-pointer transition-all duration-200 ${
+                filters.colors.includes(color.name)
+                  ? 'border-blue-500 shadow-lg ring-2 ring-blue-200'
+                  : 'border-gray-300 hover:border-gray-400'
+              }`}
+              style={{ 
+                backgroundColor: color.value,
+                ...(color.name === 'White' && { border: '2px solid #e5e7eb' })
+              }}
+            >
+              {filters.colors.includes(color.name) && (
+                <div className="w-full h-full rounded-full flex items-center justify-center">
+                  <svg 
+                    className={`w-4 h-4 ${color.name === 'White' || color.name === 'Yellow' ? 'text-gray-800' : 'text-white'}`} 
+                    fill="currentColor" 
+                    viewBox="0 0 20 20"
+                  >
+                    <path 
+                      fillRule="evenodd" 
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" 
+                      clipRule="evenodd" 
+                    />
+                  </svg>
+                </div>
+              )}
+            </button>
           ))}
         </div>
+        {filters.colors.length > 0 && (
+          <div className="text-sm text-gray-600 font-medium mt-4">
+            Selected: {filters.colors.join(', ')}
+          </div>
+        )}
       </div>
 
-      {/* Clear Filters */}
-      <Button size="xs" variant="accent" className="mt-4 px-5">
-        Clear All
-      </Button>
+      {/* Action Buttons */}
+      <div className="flex gap-3 pt-4 border-t border-gray-200">
+        <Button 
+          size="xs" 
+          variant="rubix" 
+          className="w-1/2 px-5"
+          onClick={handleApplyFilters}
+          disabled={!filtersChanged}
+        >
+          {hasUnappliedChanges ? 'Apply Filters' : 'Filters Applied'}
+        </Button>
+        
+        <Button 
+          size="xs" 
+          variant="alert-secondary" 
+          className="w-1/2 px-5"
+          onClick={handleClearAll}
+          disabled={!hasActiveFilters}
+        >
+          Clear All
+        </Button>
+      </div>     
     </div>
   );
 };

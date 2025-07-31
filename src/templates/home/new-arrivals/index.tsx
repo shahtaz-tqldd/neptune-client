@@ -6,7 +6,7 @@ import ProductCrad from "@/templates/products/product-card";
 import { DEMO_PRODUCTS } from "@/templates/products/demo-data";
 
 const NewArrivals = () => {
-  const products = DEMO_PRODUCTS?.slice(0, 4);
+  const products = DEMO_PRODUCTS?.slice(1, 5);
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">

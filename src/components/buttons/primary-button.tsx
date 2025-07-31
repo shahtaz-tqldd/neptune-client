@@ -5,10 +5,11 @@ import { ArrowRight } from "@/assets/algo-icons";
 interface ButtonProps {
   children: React.ReactNode;
   className?: string;
-  variant?: "primary" | "secondary" | "accent" | 'rubix';
+  variant?: "primary" | "secondary" | "accent" | 'rubix' | 'alert-primary' | 'alert-secondary';
   size?: "xs" | "sm" | "md";
   role?: "button" | "a";
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 const variantClasses = {
@@ -16,9 +17,15 @@ const variantClasses = {
   secondary:
     "bg-blue-600/5 text-blue-900 dark:bg-white/10 dark:text-white border border-blue-600/15 dark:border-blue-600/30",
   accent:
-    "bg-green-700 text-white font-semibold",
+    "bg-green-500 text-white font-semibold",
   rubix:
     "bg-green-700/10 text-green-600 font-semibold",
+  
+  "alert-primary":
+      "bg-red-500 text-white font-semibold",
+
+  "alert-secondary":
+    "bg-red-500/10 text-red-500 font-semibold",
 };
 
 const sizeClasses = {
