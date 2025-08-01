@@ -29,7 +29,7 @@ const HeroProductCard = ({ className, product }: HeroProductCardProps) => {
       </div>
       {/* Price */}
       <div className="text-2xl font-extrabold text-gray-900 mb-4">
-        ${product.price}
+        {product.price}
       </div>
       {/* Color Options */}
       <div className="flex gap-2 mb-5">

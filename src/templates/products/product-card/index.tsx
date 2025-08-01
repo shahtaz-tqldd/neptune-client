@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import type { ProductProps } from "../types";
 import Link from "next/link";
 import { productName } from "@/lib/sanitize";
+import { Cart } from "@/assets/algo-icons";
 
 interface ProductCardProps {
   product: ProductProps;
@@ -41,14 +42,14 @@ const ProductCard = ({ product, size = "md" }: ProductCardProps) => {
   };
 
   return (
-    <Link href={`/products/${productName(product.name)}`} key={product.id}>
+    <Link href={`/products/${productName(product.name)}`} className="group">
       {/* Image + Discount Badge */}
-      <div className={cn("relative w-full mb-4", styles.imageHeight)}>
+      <div className={cn("relative w-full mb-4 overflow-hidden rounded-2xl", styles.imageHeight)}>
         <Image
           src={product.image}
           alt={product.name}
           fill
-          className="object-cover rounded-2xl"
+          className="object-cover bg-gray-200 group-hover:scale-105 tr"
         />
         <div
           className={cn(
@@ -65,7 +66,7 @@ const ProductCard = ({ product, size = "md" }: ProductCardProps) => {
 
       {/* CTA + Price */}
       <div className="flbx mt-4">
-        <NavigateButton onClick={handleAddToCart} className={styles.button}>
+        <NavigateButton onClick={handleAddToCart} className={styles.button} icon={Cart}>
           Add to Cart
         </NavigateButton>
         <h5 className={cn("font-semibold text-red-500", styles.price)}>

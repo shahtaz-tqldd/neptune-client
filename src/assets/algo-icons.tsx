@@ -191,13 +191,13 @@ export const SearchIcon = ({
 export const CheckIcon = ({
   size = 8,
   className,
-  color = "#1C274C",
+  color = "#fff",
 }: IconProps) => {
   return (
     <svg
       width={size * 4}
       height={size * 4}
-      viewBox="0 0 18 30"
+      viewBox="0 0 24 26"
       fill="none"
       className={className}
       xmlns="http://www.w3.org/2000/svg"
@@ -207,7 +207,7 @@ export const CheckIcon = ({
           id="Vector"
           d="M4 12L8.94975 16.9497L19.5572 6.34326"
           stroke={color}
-          strokeWidth="2"
+          strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
@@ -408,6 +408,7 @@ export const MapIcon = ({
     </svg>
   );
 };
+
 export const WorldIcon = ({
   size = 8,
   className,
