@@ -12,7 +12,7 @@ function Card({ className, children, ...props }: CardProps) {
     <div
       className={cn(
         // "bg-gradient-to-br from-[#DFF2EB] via-[#B9E5E8] to-[#DFF2EB] rounded-xl p-8 shadow-sm",
-        "bg-gradient-to-br from-[#DFF2EB]/20 via-[#B9E5E8]/25 to-red-500/5 rounded-xl p-8",
+        "bg-gradient-to-br from-[#DFF2EB]/35 via-[#B9E5E8]/20 to-red-500/5 rounded-xl p-8 pt-6",
         className
       )}
       {...props}

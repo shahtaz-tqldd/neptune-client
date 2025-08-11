@@ -6,7 +6,14 @@ import LinkButton from "@/components/buttons/link-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { CityIcon, EmailIcon, MapIcon, PhoneIcon, UserIcon, WorldIcon } from "@/assets/algo-icons";
+import {
+  CityIcon,
+  EmailIcon,
+  MapIcon,
+  PhoneIcon,
+  UserIcon,
+  WorldIcon,
+} from "@/assets/algo-icons";
 
 const CheckoutPage = () => {
   return (
@@ -21,18 +28,21 @@ const CheckoutPage = () => {
           <Card className="space-y-4">
             <h4 className="mb-6">Shipping Information</h4>
             <div className="grid md:grid-cols-2 gap-6">
-              <Input placeholder="First Name" icon={<UserIcon size={5}/>} />
-              <Input placeholder="Last Name" icon={<UserIcon size={5}/>} />
+              <Input placeholder="First Name" icon={<UserIcon size={5} />} />
+              <Input placeholder="Last Name" icon={<UserIcon size={5} />} />
             </div>
             <div className="grid md:grid-cols-2 gap-6">
-              <Input placeholder="Email Address" icon={<EmailIcon size={5}/>} />
-              <Input placeholder="Phone Number" icon={<PhoneIcon size={5}/>} />
+              <Input
+                placeholder="Email Address"
+                icon={<EmailIcon size={5} />}
+              />
+              <Input placeholder="Phone Number" icon={<PhoneIcon size={5} />} />
             </div>
             <Textarea placeholder="Street Address" />
             <div className="grid md:grid-cols-3 gap-6">
-              <Input placeholder="City" icon={<CityIcon size={5}/>} />
-              <Input placeholder="State/Province" icon={<MapIcon size={5}/>} />
-              <Input placeholder="Postal Code" icon={<WorldIcon size={5}/>} />
+              <Input placeholder="City" icon={<CityIcon size={5} />} />
+              <Input placeholder="State/Province" icon={<MapIcon size={5} />} />
+              <Input placeholder="Postal Code" icon={<WorldIcon size={5} />} />
             </div>
           </Card>
           {/* Notes */}
@@ -83,9 +93,11 @@ const CheckoutPage = () => {
           <Button size="sm" variant="accent" className="w-full mt-6">
             Place Order
           </Button>
-          <LinkButton link="/cart" className="block text-center">
-            Return to Cart
-          </LinkButton>
+          <div className="flex justify-center">
+            <LinkButton link="/cart" className="block text-center">
+              Return to Cart
+            </LinkButton>
+          </div>
         </Card>
       </div>
     </main>

@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PRODUCT_DATA } from "./demo-data";
+import Link from "next/link";
 
 // Image Gallery Component
 interface ImageGalleryProps {
@@ -434,9 +435,9 @@ const ProductDetailsPage = () => {
               <ShoppingCart className="w-5 h-5" />
               Add to Cart
             </button>
-            <button className="flex-1 border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition-all duration-200">
+            <Link href='/checkout' className="flex-1 border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition-all duration-200">
               Buy Now
-            </button>
+            </Link>
           </div>
 
           {/* Shipping Info */}
