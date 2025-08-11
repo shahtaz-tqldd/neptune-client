@@ -15,7 +15,15 @@ export default function LinkButton({
   return (
     <Link
       href={link}
-      className={`text-teal-900 font-semibold text-lg underline underline-offset-5 ${className}`}
+      className={`
+        relative inline-block text-teal-900 font-semibold text-lg
+        after:content-[''] after:absolute after:left-0 after:bottom-0
+        after:w-full after:h-[2px] after:bg-current
+        after:scale-x-0 after:origin-left
+        after:transition-transform after:duration-300
+        hover:after:scale-x-100
+        ${className}
+      `}
     >
       {children}
     </Link>

@@ -147,9 +147,9 @@ const Filter: React.FC<FilterProps> = ({
             <button
               key={size}
               onClick={() => handleSizeToggle(size)}
-              className={`h-10 w-10 rounded-full border-2 text-sm font-medium transition-all duration-200 ${
+              className={`h-8 w-8 rounded-full border-2 text-sm pt-[1px] font-medium transition-all duration-200 ${
                 filters.sizes.includes(size)
-                  ? 'bg-blue-500 text-white border-blue-500 shadow-md'
+                  ? 'bg-green-500 text-white border-green-500 shadow-md'
                   : 'bg-gray-50 text-gray-700 border-gray-200 hover:border-gray-300 hover:bg-gray-100'
               }`}
             >
@@ -173,14 +173,14 @@ const Filter: React.FC<FilterProps> = ({
               key={color.name}
               onClick={() => handleColorToggle(color.name)}
               title={color.name}
-              className={`w-8 h-8 rounded-full border-2 cursor-pointer transition-all duration-200 ${
+              className={`w-7 h-7 rounded-full border-3 cursor-pointer transition-all duration-200 ${
                 filters.colors.includes(color.name)
-                  ? 'border-blue-500 shadow-lg ring-2 ring-blue-200'
-                  : 'border-gray-300 hover:border-gray-400'
+                  ? 'border-green-500'
+                  : 'border-black/15 hover:border-green-500/20'
               }`}
               style={{ 
                 backgroundColor: color.value,
-                ...(color.name === 'White' && { border: '2px solid #e5e7eb' })
+                ...(color.name === 'Black' && { borderColor: '#cfcfcfff' })
               }}
             >
               {filters.colors.includes(color.name) && (

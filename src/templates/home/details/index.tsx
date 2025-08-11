@@ -6,7 +6,7 @@ import React from "react";
 import { DETAILS_DATA } from "./demo-data";
 
 const Details = () => {
-  const detailsData = DETAILS_DATA
+  const detailsData = DETAILS_DATA;
   return (
     <section className="py-24">
       <p className="uppercase tracking-[2px] text-lg text-center">
@@ -20,7 +20,9 @@ const Details = () => {
         {detailsData.map((item, index) => (
           <div
             key={index}
-            className={`${item.bg} rounded-3xl p-6 flex flex-col items-center relative group ${
+            className={`${
+              item.bg
+            } rounded-3xl p-6 flex flex-col items-center relative overflow-hidden group ${
               item.textPosition === "top"
                 ? "justify-between pb-0"
                 : item.textPosition === "side"
@@ -80,6 +82,45 @@ const Details = () => {
             {item.textPosition === "side" && (
               <p className="text-lg max-w-xs">{item.text}</p>
             )}
+
+            {/* bg shapes */}
+            <div
+              className={`absolute z-0 h-[400px] w-[400px] center rounded-full ${
+                index === 0
+                  ? "-top-48 -left-48"
+                  : index === 1
+                  ? "-bottom-48 -left-48"
+                  : "-top-48 -right-48"
+              }`}
+            >
+              <div
+                className={`absolute h-[520px] w-[520px] center rounded-full border-2`}
+                style={{
+                  borderColor: `rgba(${item.bgColorRGB}, 0.05)`,
+                }}
+              >
+                <div
+                  className={`absolute h-[360px] w-[360px] center rounded-full border-2`}
+                  style={{
+                    borderColor: `rgba(${item.bgColorRGB}, 0.07)`,
+                  }}
+                >
+                  <div
+                    className={`absolute h-[240px] w-[240px] center rounded-full border-2`}
+                    style={{
+                      borderColor: `rgba(${item.bgColorRGB}, 0.10)`,
+                    }}
+                  >
+                    <div
+                      className={`absolute h-[120px] w-[120px] rounded-full border-2`}
+                      style={{
+                        borderColor: `rgba(${item.bgColorRGB}, 0.14)`,
+                      }}
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>

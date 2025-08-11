@@ -29,7 +29,7 @@ const variantClasses = {
 };
 
 const sizeClasses = {
-  xs: "py-2 pr-3 pl-6 text-sm",
+  xs: "py-2 pr-3.5 pl-6 text-sm",
   sm: "pl-10 pr-6 py-3 text-lg",
   md: "py-3 pr-5 pl-4",
 };
@@ -60,8 +60,8 @@ const Button: React.FC<ButtonProps> = ({
       </span>
       {variant === "primary" && (
         <ArrowRight
-          className={`opacity-0 transition-all duration-300 group-hover/button:opacity-100 group-hover/button:translate-x-1 ${size==="xs"?"translate-x-[-0.1rem]":"translate-x-[-0.25rem]"}`}
-          size={size==="xs" ? 3 : 5}
+          className={`opacity-0 transition-all -ml-2 duration-300 group-hover/button:opacity-100 group-hover/button:translate-x-1 ${size==="xs"?"translate-x-[-2px]":"translate-x-[-0.25rem]"}`}
+          size={size==="xs" ? 4 : 5}
           color="#fff"
         />
       )}

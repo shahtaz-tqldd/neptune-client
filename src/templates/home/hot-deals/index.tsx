@@ -10,14 +10,12 @@ import { DEMO_PRODUCTS } from "@/templates/products/demo-data";
 import { formatTime } from "@/lib/date-time";
 import { ProductProps } from "@/templates/products/types";
 
-
 const HotDeals = () => {
-  
   const HOT_DEALS: ProductProps[] = DEMO_PRODUCTS.filter((p) => p.hot_deals);
   const [timers, setTimers] = useState<number[]>(
     HOT_DEALS.map((deal) => Number(deal.offerEndsIn) || 0)
   );
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
       setTimers((prev) => prev.map((t) => (t > 0 ? t - 1 : 0)));
@@ -38,7 +36,7 @@ const HotDeals = () => {
             <div
               key={index}
               className={clsx(
-                "relative rounded-3xl overflow-hidden p-8 flex items-center gap-8 transition-all group",
+                "relative rounded-3xl overflow-hidden p-8 flex items-center gap-8 transition-all group relative",
                 index % 2 === 0 ? "bg-indigo-50" : "bg-teal-100/60"
               )}
             >
@@ -72,10 +70,9 @@ const HotDeals = () => {
               </div>
 
               {/* Details */}
-              <div className="flex-1">
+              <div className="flex-1 relative z-10">
                 <span className="text-sm bg-yellow-200 text-yellow-900 font-medium px-3 py-1.5 rounded-full">
-                  Save{" "}
-                  {product.discount}
+                  Save {product.discount}
                 </span>
                 <h4 className="my-4">{product.name}</h4>
                 <div className="flex items-end gap-4 mb-8">
@@ -99,6 +96,14 @@ const HotDeals = () => {
                 <Link href={`/products/${productName(product.name)}`}>
                   <Button size="xs">Buy Now</Button>
                 </Link>
+              </div>
+
+              <div className="absolute z-0 -top-48 -right-48 h-100 w-100 center border-2 border-white/20 rounded-full">
+                <div className="absolute h-80 w-80 center border-2 border-white/40 rounded-full">
+                  <div className="absolute h-60 w-60 center border-3 border-white/60 rounded-full">
+                    <div className="absolute h-36 w-36 border-3 border-white/80 rounded-full"></div>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

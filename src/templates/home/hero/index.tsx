@@ -12,7 +12,9 @@ import { DEMO_PRODUCTS } from "@/templates/products/demo-data";
 import type { ProductProps } from "@/templates/products/types";
 
 const Hero = () => {
-  const product_data: ProductProps | undefined = DEMO_PRODUCTS?.find(p => p.is_hero_product);
+  const product_data: ProductProps | undefined = DEMO_PRODUCTS?.find(
+    (p) => p.is_hero_product
+  );
 
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#DFF2EB] via-[#B9E5E8] to-[#DFF2EB]">

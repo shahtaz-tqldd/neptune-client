@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import type { ProductProps } from "../types";
 import Link from "next/link";
 import { productName } from "@/lib/sanitize";
-import { Cart } from "@/assets/algo-icons";
+import { Cart, CartPlusIcon } from "@/assets/algo-icons";
 
 interface ProductCardProps {
   product: ProductProps;
@@ -21,7 +21,7 @@ const sizeStyles = {
     imageHeight: "h-[220px]",
     discountText: "text-xs",
     name: "scale-90 -ml-2",
-    button: "scale-90 -ml-3",
+    button: "scale-90 -mr-4",
     price: "text-base",
   },
   md: {
@@ -44,21 +44,19 @@ const ProductCard = ({ product, size = "md" }: ProductCardProps) => {
   return (
     <Link href={`/products/${productName(product.name)}`} className="group">
       {/* Image + Discount Badge */}
-      <div className={cn("relative w-full mb-4 overflow-hidden rounded-2xl", styles.imageHeight)}>
+      <div
+        className={cn(
+          "relative w-full mb-4 overflow-hidden rounded-2xl",
+          styles.imageHeight
+        )}
+      >
         <Image
           src={product.image}
           alt={product.name}
           fill
-          className="object-cover bg-gray-200 group-hover:scale-105 tr"
+          className="object-cover bg-gray-200 transition-transform duration-300 ease-in-out group-hover:scale-105 will-change-transform [transform:translateZ(0)]"
         />
-        <div
-          className={cn(
-            "bg-black text-white absolute top-4 right-4 py-2 px-4 rounded-full",
-            styles.discountText
-          )}
-        >
-          {product.discount} Off
-        </div>
+        <DiscountBadge discount={product?.discount} size={size} />
       </div>
 
       {/* Product Name */}
@@ -66,15 +64,43 @@ const ProductCard = ({ product, size = "md" }: ProductCardProps) => {
 
       {/* CTA + Price */}
       <div className="flbx mt-4">
-        <NavigateButton onClick={handleAddToCart} className={styles.button} icon={Cart}>
-          Add to Cart
-        </NavigateButton>
-        <h5 className={cn("font-semibold text-red-500", styles.price)}>
+        <h5 className={cn("font-semibold text-red-600", styles.price)}>
           {product.price}
         </h5>
+        <NavigateButton
+          onClick={handleAddToCart}
+          className={styles.button}
+          icon={CartPlusIcon}
+        >
+          Add to Cart
+        </NavigateButton>
       </div>
     </Link>
   );
 };
 
 export default ProductCard;
+
+const DiscountBadge = ({
+  discount,
+  size,
+}: {
+  discount: string | undefined;
+  size: string;
+}) => {
+  return (
+    <div
+      className={cn(
+        "bg-black text-white text-sm absolute top-4 right-4 rounded-full flex items-center",
+        "py-3 px-4 whitespace-nowrap overflow-hidden transition-all duration-300 ease-in-out",
+        "w-[44px] group-hover:w-[82px]",
+        size == "sm" ? "scale-90" : "scale-100"
+      )}
+    >
+      <span className="transition-opacity duration-300 -translate-x-1.5 group-hover:translate-x-0 tr">
+        {discount}{" "}
+        <span className="opacity-0 group-hover:opacity-100 tr">Off</span>
+      </span>
+    </div>
+  );
+};
