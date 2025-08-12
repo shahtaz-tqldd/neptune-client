@@ -121,10 +121,10 @@ const ColorSelector = ({
             key={color.code}
             onClick={() => onColorChange(color)}
             title={color.name}
-            className={`w-8 h-8 rounded-full border-2 transition-all duration-200 relative ${
+            className={`w-7 h-7 rounded-full border-2 transition-all duration-200 relative ${
               selectedColor?.code === color.code
-                ? "border-gray-800 ring-2 ring-gray-200"
-                : "border-gray-300 hover:border-gray-400"
+                ? "border-2 border-green-500"
+                : "border-black/20 hover:scale-105"
             }`}
             style={{ backgroundColor: color.value }}
           >
@@ -230,7 +230,7 @@ interface ProductFeaturesProps {
 }
 const ProductFeatures = ({ features }: ProductFeaturesProps) => {
   return (
-    <div className="bg-gray-50 rounded-xl p-6 space-y-4 mt-9">
+    <div className="space-y-4 mt-9">
       <h3 className="text-lg font-semibold text-gray-900">Key Features</h3>
       <ul className="space-y-2">
         {features.map((feature, index) => (
@@ -289,7 +289,7 @@ const ProductSpeceifications = ({
   className,
 }: ProductSpeceificationsProps) => {
   return (
-    <div className={cn("md:mt-16 mt-8 bg-gray-50 rounded-2xl p-6", className)}>
+    <div className={cn("md:mt-16 mt-8", className)}>
       <h3 className="text-2xl font-bold text-gray-900 mb-6">Specifications</h3>
       <div className="grid grid-cols-1">
         {Object.entries(specifications).map(([key, value]) => (
@@ -435,7 +435,7 @@ const ProductDetailsPage = () => {
               <ShoppingCart className="w-5 h-5" />
               Add to Cart
             </button>
-            <Link href='/checkout' className="flex-1 border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition-all duration-200">
+            <Link href='/checkout' className="flex-1 text-center border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition-all duration-200">
               Buy Now
             </Link>
           </div>

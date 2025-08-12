@@ -39,16 +39,16 @@ const Hero = () => {
         </div>
 
         {/* Right: Shoe Image */}
-        <div className="relative group">
+        <div className="mx-auto relative group">
           {/* Product Card */}
           <HeroProductCard
-            className="absolute top-8 right-4 -translate-x-16 group-hover:-translate-x-[72px] group-hover:-translate-y-2"
+            className="absolute top-8 right-4 -translate-x-40 group-hover:-translate-x-44 group-hover:-translate-y-2"
             product={product_data}
           />
           <Image
             src={product_data?.image || "/placeholder.png"}
             alt={product_data?.name || "Product image"}
-            className="h-[500px] w-[500px] translate-x-36 group-hover:rotate-[5deg] group-hover:translate-x-[152px] group-hover:translate-y-6 tr object-contain drop-shadow-[0_50px_25px_rgba(0,0,0,0.5)] pointer-events-none"
+            className="h-[500px] w-[500px] group-hover:rotate-[5deg] group-hover:translate-x-8 group-hover:translate-y-6 tr object-contain drop-shadow-[0_50px_25px_rgba(0,0,0,0.5)] pointer-events-none"
             priority
           />
         </div>

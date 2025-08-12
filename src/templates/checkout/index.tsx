@@ -90,7 +90,7 @@ const CheckoutPage = () => {
             </label>
           </div>
 
-          <Button size="sm" variant="accent" className="w-full mt-6">
+          <Button size="sm" className="w-full mt-6">
             Place Order
           </Button>
           <div className="flex justify-center">
