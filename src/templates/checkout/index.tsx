@@ -9,8 +9,17 @@ import {
   AlertCircle,
   Check,
   MapPinned,
+  MapPinIcon,
 } from "lucide-react";
 import Button from "@/components/buttons/primary-button";
+import { Input } from "@/components/ui/input";
+import {
+  CityIcon,
+  EmailIcon,
+  MapIcon,
+  UserIcon,
+  WorldIcon,
+} from "@/assets/algo-icons";
 
 interface CartItem {
   id: string;
@@ -159,28 +168,26 @@ const CheckoutPage: React.FC = () => {
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         First Name
                       </label>
-                      <input
-                        type="text"
+                      <Input
+                        icon={<UserIcon size={5} />}
+                        placeholder="First Name"
                         value={shippingInfo.firstName}
                         onChange={(e) =>
                           handleInputChange("firstName", e.target.value)
                         }
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-                        placeholder="John"
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Last Name
                       </label>
-                      <input
-                        type="text"
+                      <Input
+                        icon={<UserIcon size={5} />}
+                        placeholder="Last Name"
                         value={shippingInfo.lastName}
                         onChange={(e) =>
                           handleInputChange("lastName", e.target.value)
                         }
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-                        placeholder="Doe"
                       />
                     </div>
                   </div>
@@ -189,14 +196,13 @@ const CheckoutPage: React.FC = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Email Address
                     </label>
-                    <input
-                      type="email"
+                    <Input
+                      icon={<EmailIcon size={5} />}
+                      placeholder="example@email.com"
                       value={shippingInfo.email}
                       onChange={(e) =>
                         handleInputChange("email", e.target.value)
                       }
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-                      placeholder="john.doe@example.com"
                     />
                   </div>
 
@@ -204,14 +210,13 @@ const CheckoutPage: React.FC = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Address
                     </label>
-                    <input
-                      type="text"
+                    <Input
+                      icon={<MapIcon size={5} />}
+                      placeholder="Address"
                       value={shippingInfo.address}
                       onChange={(e) =>
                         handleInputChange("address", e.target.value)
                       }
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-                      placeholder="123 Main Street"
                     />
                   </div>
 
@@ -220,51 +225,47 @@ const CheckoutPage: React.FC = () => {
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         City
                       </label>
-                      <input
-                        type="text"
+                      <Input
+                        icon={<CityIcon size={5} />}
+                        placeholder="Dhaka"
                         value={shippingInfo.city}
                         onChange={(e) =>
                           handleInputChange("city", e.target.value)
                         }
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-                        placeholder="New York"
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         ZIP Code
                       </label>
-                      <input
-                        type="text"
+                      <Input
+                        icon={<WorldIcon size={5} />}
+                        placeholder="Zip Code"
                         value={shippingInfo.zipCode}
                         onChange={(e) =>
                           handleInputChange("zipCode", e.target.value)
                         }
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-                        placeholder="10001"
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Country
                       </label>
-                      <select
+                     <Input
+                        icon={<MapPinIcon size={20} />}
+                        placeholder="Bangladesh"
                         value={shippingInfo.country}
                         onChange={(e) =>
                           handleInputChange("country", e.target.value)
                         }
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-                      >
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>United Kingdom</option>
-                      </select>
+                      />
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
-                    <button className="w-full border-2 border-black text-black py-3 px-6 rounded-full font-medium transition-colors">
+                    <Button size="lg" variant="accent">
                       Go Back to Cart
-                    </button>
+                    </Button>
+
                     <Button onClick={() => setCurrentStep(2)}>
                       Continue to Payment
                     </Button>
@@ -286,7 +287,7 @@ const CheckoutPage: React.FC = () => {
                     <div
                       className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
                         paymentMethod === "card"
-                          ? "border-green-500 bg-green-50/50"
+                          ? "border-blue-500 bg-blue-50/50"
                           : "border-gray-200"
                       }`}
                       onClick={() => setPaymentMethod("card")}
@@ -296,16 +297,16 @@ const CheckoutPage: React.FC = () => {
                           type="radio"
                           checked={paymentMethod === "card"}
                           onChange={() => setPaymentMethod("card")}
-                          className="text-green-500 focus:ring-green-500"
+                          className="text-blue-500 focus:ring-blue-500"
                         />
                         <span className="font-medium text-gray-900">
                           Credit/Debit Card
                         </span>
                       </div>
                       {paymentMethod === "card" && (
-                        <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                        <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                           <div className="flex items-center space-x-2">
-                            <AlertCircle className="w-5 h-5 text-green-500" />
+                            <AlertCircle className="w-5 h-5 text-blue-500" />
                             <p className="text-sm text-blue-700">
                               Card payment will be processed securely through
                               Stripe on the next step.
@@ -318,7 +319,7 @@ const CheckoutPage: React.FC = () => {
                     <div
                       className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
                         paymentMethod === "paypal"
-                          ? "border-green-500 bg-green-50/50"
+                          ? "border-blue-500 bg-blue-50/50"
                           : "border-gray-200"
                       }`}
                       onClick={() => setPaymentMethod("paypal")}
@@ -328,7 +329,7 @@ const CheckoutPage: React.FC = () => {
                           type="radio"
                           checked={paymentMethod === "paypal"}
                           onChange={() => setPaymentMethod("paypal")}
-                          className="text-green-500 focus:ring-green-500"
+                          className="text-blue-500 focus:ring-blue-500"
                         />
 
                         <span className="font-medium text-gray-900">
@@ -339,13 +340,14 @@ const CheckoutPage: React.FC = () => {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
-                    <button
+                    <Button
+                      size="lg"
+                      variant="accent"
                       onClick={() => setCurrentStep(1)}
-                      className="border-2 border-black/90 text-black/90 py-3 px-6 rounded-full font-medium"
                     >
                       Back
-                    </button>
-                    <Button onClick={() => setCurrentStep(3)}>
+                    </Button>
+                    <Button size="lg" onClick={() => setCurrentStep(3)}>
                       Review Order
                     </Button>
                   </div>
@@ -390,17 +392,20 @@ const CheckoutPage: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="flex space-x-4">
-                    <button
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <Button
+                      size="lg"
+                      variant="accent"
                       onClick={() => setCurrentStep(2)}
-                      className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-3 px-6 rounded-lg font-medium transition-colors"
                     >
                       Back
-                    </button>
-                    <button className="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-lg font-medium transition-colors flex items-center justify-center space-x-2">
-                      <Lock className="w-4 h-4" />
-                      <span>Complete Order</span>
-                    </button>
+                    </Button>
+                    <Button size="lg" isArrow={false}>
+                      <div className="flx gap-3">
+                        <Lock className="w-4 h-4" />
+                        <span>Complete Order</span>
+                      </div>
+                    </Button>
                   </div>
                 </div>
               )}

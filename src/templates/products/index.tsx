@@ -17,6 +17,7 @@ import {
 import { cn } from "@/lib/utils";
 import { PRODUCT_DATA } from "./demo-data";
 import Link from "next/link";
+import Button from "@/components/buttons/primary-button";
 
 // Image Gallery Component
 interface ImageGalleryProps {
@@ -106,6 +107,7 @@ interface ColorSelectorProps {
   selectedColor: { code: string; name: string; value: string } | null;
   onColorChange: (color: { code: string; name: string; value: string }) => void;
 }
+
 const ColorSelector = ({
   colors,
   selectedColor,
@@ -122,11 +124,7 @@ const ColorSelector = ({
             key={color.code}
             onClick={() => onColorChange(color)}
             title={color.name}
-            className={`w-7 h-7 rounded-full border-2 transition-all duration-200 relative ${
-              selectedColor?.code === color.code
-                ? "border-2 border-green-500"
-                : "border-black/20 hover:scale-105"
-            }`}
+            className={`w-7 h-7 rounded-full border-2 transition-all duration-200 relative border-black/20 hover:scale-105`}
             style={{ backgroundColor: color.value }}
           >
             {selectedColor?.code === color.code && (
@@ -152,6 +150,7 @@ interface SizeType {
   eu: string;
   available: boolean;
 }
+
 interface SizeSelectorProps {
   sizes: SizeType[];
   selectedSize: SizeType | null;
@@ -194,6 +193,7 @@ interface QuantitySelectorProps {
   onQuantityChange: (quantity: number) => void;
   max?: number;
 }
+
 const QuantitySelector = ({
   quantity,
   onQuantityChange,
@@ -229,6 +229,7 @@ const QuantitySelector = ({
 interface ProductFeaturesProps {
   features: string[];
 }
+
 const ProductFeatures = ({ features }: ProductFeaturesProps) => {
   return (
     <div className="space-y-4 mt-9">
@@ -255,6 +256,7 @@ interface ShippingInfoProps {
     warranty: string;
   };
 }
+
 const ShippingInfo = ({ shipping }: ShippingInfoProps) => {
   return (
     <div className="border border-gray-200 rounded-xl p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white">
@@ -294,6 +296,7 @@ interface ProductSpeceificationsProps {
   specifications: Record<string, string>;
   className?: string;
 }
+
 const ProductSpeceifications = ({
   specifications,
   className,
@@ -440,14 +443,15 @@ const ProductDetailsPage = () => {
           />
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-6">
-            <button className="flex-1 bg-gray-900 text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-6">
+            <Button variant="accent" size="lg">
+              <div className="flx gap-3">
+
               <ShoppingCart className="w-5 h-5" />
               Add to Cart
-            </button>
-            <Link href='/checkout' className="flex-1 text-center border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-900 hover:text-white transition-all duration-200">
-              Buy Now
-            </Link>
+              </div>
+            </Button>
+            <Button link="/checkout">Buy Now</Button>
           </div>
 
           {/* Shipping Info */}
