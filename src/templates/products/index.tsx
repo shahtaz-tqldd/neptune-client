@@ -12,6 +12,7 @@ import {
   Minus,
   Plus,
   Check,
+  Truck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PRODUCT_DATA } from "./demo-data";
@@ -272,6 +273,15 @@ const ShippingInfo = ({ shipping }: ShippingInfoProps) => {
           <p className="font-medium text-sm">{shipping.warranty} Warranty</p>
           <p className="text-xs text-gray-600">
             Manufacturer warranty included
+          </p>
+        </div>
+      </div>
+      <div className="flex items-center gap-3">
+        <Truck className="w-5 h-5 text-yellow-500" />
+        <div>
+          <p className="font-medium text-sm">Free Delivery</p>
+          <p className="text-xs text-gray-600">
+            Free delivery on orders over $50
           </p>
         </div>
       </div>
