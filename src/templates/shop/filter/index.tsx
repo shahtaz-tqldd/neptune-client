@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback, useMemo } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RangeSlider } from "@/components/ui/slider";
@@ -6,8 +5,8 @@ import Button from "@/components/buttons/primary-button";
 import { FilterProps, FilterState } from "../types";
 import { DEMO_COLORS, DEMO_SIZES } from "@/templates/products/demo-data";
 
-const sizes = DEMO_SIZES
-const colors = DEMO_COLORS
+const sizes = DEMO_SIZES;
+const colors = DEMO_COLORS;
 
 const Filter: React.FC<FilterProps> = ({
   onFiltersChange,
@@ -15,7 +14,7 @@ const Filter: React.FC<FilterProps> = ({
   filters,
   setFilters,
   defaultFilters,
-  initialFilters
+  initialFilters,
 }) => {
   // Track if filters have been modified from initial state
   const [hasUnappliedChanges, setHasUnappliedChanges] = useState(false);
@@ -41,43 +40,58 @@ const Filter: React.FC<FilterProps> = ({
   }, [filters, lastAppliedFilters]);
 
   // Update filters and notify parent
-  const updateFilters = useCallback((newFilters: FilterState) => {
-    setFilters(newFilters);
-    setHasUnappliedChanges(true);
-    onFiltersChange?.(newFilters);
-  }, [onFiltersChange, setFilters]);
+  const updateFilters = useCallback(
+    (newFilters: FilterState) => {
+      setFilters(newFilters);
+      setHasUnappliedChanges(true);
+      onFiltersChange?.(newFilters);
+    },
+    [onFiltersChange, setFilters]
+  );
 
   // Handle category checkbox changes
-  const handleCategoryChange = useCallback((category: string, checked: boolean) => {
-    const newCategories = checked
-      ? [...filters.categories, category]
-      : filters.categories.filter(c => c !== category);
-    
-    updateFilters({ ...filters, categories: newCategories });
-  }, [filters, updateFilters]);
+  const handleCategoryChange = useCallback(
+    (category: string, checked: boolean) => {
+      const newCategories = checked
+        ? [...filters.categories, category]
+        : filters.categories.filter((c) => c !== category);
+
+      updateFilters({ ...filters, categories: newCategories });
+    },
+    [filters, updateFilters]
+  );
 
   // Handle price range changes
-  const handlePriceRangeChange = useCallback((minVal: number, maxVal: number) => {
-    updateFilters({ ...filters, priceRange: [minVal, maxVal] });
-  }, [filters, updateFilters]);
+  const handlePriceRangeChange = useCallback(
+    (minVal: number, maxVal: number) => {
+      updateFilters({ ...filters, priceRange: [minVal, maxVal] });
+    },
+    [filters, updateFilters]
+  );
 
   // Handle size selection
-  const handleSizeToggle = useCallback((size: string) => {
-    const newSizes = filters.sizes.includes(size)
-      ? filters.sizes.filter(s => s !== size)
-      : [...filters.sizes, size];
-    
-    updateFilters({ ...filters, sizes: newSizes });
-  }, [filters, updateFilters]);
+  const handleSizeToggle = useCallback(
+    (size: string) => {
+      const newSizes = filters.sizes.includes(size)
+        ? filters.sizes.filter((s) => s !== size)
+        : [...filters.sizes, size];
+
+      updateFilters({ ...filters, sizes: newSizes });
+    },
+    [filters, updateFilters]
+  );
 
   // Handle color selection
-  const handleColorToggle = useCallback((colorName: string) => {
-    const newColors = filters.colors.includes(colorName)
-      ? filters.colors.filter(c => c !== colorName)
-      : [...filters.colors, colorName];
-    
-    updateFilters({ ...filters, colors: newColors });
-  }, [filters, updateFilters]);
+  const handleColorToggle = useCallback(
+    (colorName: string) => {
+      const newColors = filters.colors.includes(colorName)
+        ? filters.colors.filter((c) => c !== colorName)
+        : [...filters.colors, colorName];
+
+      updateFilters({ ...filters, colors: newColors });
+    },
+    [filters, updateFilters]
+  );
 
   // Apply filters
   const handleApplyFilters = useCallback(() => {
@@ -108,12 +122,18 @@ const Filter: React.FC<FilterProps> = ({
               htmlFor={category}
               className="flex items-center gap-3 cursor-pointer text-sm hover:text-gray-900 transition-colors"
             >
-              <Checkbox 
+              <Checkbox
                 id={category}
                 checked={filters.categories.includes(category)}
-                onCheckedChange={(checked) => handleCategoryChange(category, !!checked)}
+                onCheckedChange={(checked) =>
+                  handleCategoryChange(category, !!checked)
+                }
               />
-              <span className={filters.categories.includes(category) ? 'font-medium' : ''}>
+              <span
+                className={
+                  filters.categories.includes(category) ? "font-medium" : ""
+                }
+              >
                 {category}
               </span>
             </label>
@@ -149,8 +169,8 @@ const Filter: React.FC<FilterProps> = ({
               onClick={() => handleSizeToggle(size)}
               className={`h-8 w-8 rounded-full border-2 text-sm pt-[1px] font-medium transition-all duration-200 ${
                 filters.sizes.includes(size)
-                  ? 'bg-green-500 text-white border-green-500 shadow-md'
-                  : 'bg-gray-50 text-gray-700 border-gray-200 hover:border-gray-300 hover:bg-gray-100'
+                  ? "bg-green-500 text-white border-green-500 shadow-md"
+                  : "bg-gray-50 text-gray-700 border-gray-200 hover:border-gray-300 hover:bg-gray-100"
               }`}
             >
               {size}
@@ -159,7 +179,7 @@ const Filter: React.FC<FilterProps> = ({
         </div>
         {filters.sizes.length > 0 && (
           <div className="text-sm text-gray-600 font-medium mt-4">
-            Selected: {filters.sizes.join(', ')}
+            Selected: {filters.sizes.join(", ")}
           </div>
         )}
       </div>
@@ -173,27 +193,27 @@ const Filter: React.FC<FilterProps> = ({
               key={color.name}
               onClick={() => handleColorToggle(color.name)}
               title={color.name}
-              className={`w-7 h-7 rounded-full border-3 cursor-pointer transition-all duration-200 ${
-                filters.colors.includes(color.name)
-                  ? 'border-green-500'
-                  : 'border-black/15 hover:border-green-500/20'
-              }`}
-              style={{ 
+              className="w-7 h-7 rounded-full border-2 border-black/10 hover:scale-105 tr"
+              style={{
                 backgroundColor: color.value,
-                ...(color.name === 'Black' && { borderColor: '#cfcfcfff' })
+                ...(color.name === "Black" && { borderColor: "#cfcfcfff" }),
               }}
             >
               {filters.colors.includes(color.name) && (
                 <div className="w-full h-full rounded-full flex items-center justify-center">
-                  <svg 
-                    className={`w-4 h-4 ${color.name === 'White' || color.name === 'Yellow' ? 'text-gray-800' : 'text-white'}`} 
-                    fill="currentColor" 
+                  <svg
+                    className={`w-4 h-4 ${
+                      color.name === "White" || color.name === "Yellow"
+                        ? "text-gray-800"
+                        : "text-white"
+                    }`}
+                    fill="currentColor"
                     viewBox="0 0 20 20"
                   >
-                    <path 
-                      fillRule="evenodd" 
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" 
-                      clipRule="evenodd" 
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
                     />
                   </svg>
                 </div>
@@ -203,33 +223,33 @@ const Filter: React.FC<FilterProps> = ({
         </div>
         {filters.colors.length > 0 && (
           <div className="text-sm text-gray-600 font-medium mt-4">
-            Selected: {filters.colors.join(', ')}
+            Selected: {filters.colors.join(", ")}
           </div>
         )}
       </div>
 
       {/* Action Buttons */}
       <div className="flex gap-3 pt-4 border-t border-gray-200">
-        <Button 
-          size="xs" 
-          variant="rubix" 
+        <Button
+          size="xs"
+          variant="rubix"
           className="w-1/2 px-5"
           onClick={handleApplyFilters}
           disabled={!filtersChanged}
         >
-          {hasUnappliedChanges ? 'Apply Filters' : 'Filters Applied'}
+          {hasUnappliedChanges ? "Apply Filters" : "Filters Applied"}
         </Button>
-        
-        <Button 
-          size="xs" 
-          variant="alert-secondary" 
+
+        <Button
+          size="xs"
+          variant="alert-secondary"
           className="w-1/2 px-5"
           onClick={handleClearAll}
           disabled={!hasActiveFilters}
         >
           Clear All
         </Button>
-      </div>     
+      </div>
     </div>
   );
 };

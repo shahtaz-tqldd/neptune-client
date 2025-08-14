@@ -27,6 +27,8 @@ interface CartItem {
   price: number;
   quantity: number;
   image: string;
+  color?: string;
+  size?: string;
 }
 
 interface ShippingInfo {
@@ -58,19 +60,21 @@ const CheckoutPage: React.FC = () => {
   const cartItems: CartItem[] = [
     {
       id: "1",
-      name: "Premium Wireless Headphones",
+      name: "Nike ZoomX Velocity Running Shoes",
       price: 299.99,
       quantity: 1,
       image:
-        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&h=100&fit=crop",
+        "https://img.kwcdn.com/product/fancy/49bd82d7-2205-44a1-bde4-b5d5eb2b1b8d.jpg",
+      color: "#0eb56aff",
     },
     {
       id: "2",
-      name: "Smart Watch Series 8",
+      name: " Engineered ZoomX Edge 2",
       price: 399.99,
       quantity: 1,
       image:
-        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100&h=100&fit=crop",
+        "https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/00/2419663/1.jpg?2369",
+      size: "42",
     },
   ];
 
@@ -79,9 +83,8 @@ const CheckoutPage: React.FC = () => {
     0
   );
   const shipping = 15.99;
-  const tax = subtotal * 0.08;
   const discount = promoApplied ? subtotal * 0.1 : 0;
-  const total = subtotal + shipping + tax - discount;
+  const total = subtotal + shipping - discount;
 
   const handleInputChange = (field: keyof ShippingInfo, value: string) => {
     setShippingInfo((prev) => ({ ...prev, [field]: value }));
@@ -251,7 +254,7 @@ const CheckoutPage: React.FC = () => {
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Country
                       </label>
-                     <Input
+                      <Input
                         icon={<MapPinIcon size={20} />}
                         placeholder="Bangladesh"
                         value={shippingInfo.country}
@@ -435,9 +438,21 @@ const CheckoutPage: React.FC = () => {
                       <p className="text-sm font-medium text-gray-900 truncate">
                         {item.name}
                       </p>
-                      <p className="text-sm text-gray-500">
-                        Qty: {item.quantity}
-                      </p>
+                      <div className="mt-2 space-y-1">
+                        <p className="text-sm text-gray-500">
+                          Qty: {item.quantity}
+                        </p>
+                        {item.size && (
+                          <p className="text-sm text-gray-500">
+                            Size: {item.size}
+                          </p>
+                        )}
+                        {item.color && (
+                          <p className="text-sm text-gray-500 flx gap-2">
+                            Color: <div style={{backgroundColor: item.color}} className="h-4 w-4 rounded-full" />
+                          </p>
+                        )}
+                      </div>
                     </div>
                     <p className="text-sm font-medium text-gray-900">
                       ${item.price}
@@ -448,24 +463,26 @@ const CheckoutPage: React.FC = () => {
 
               {/* Promo Code */}
               <div className="mb-6">
-                <div className="flex space-x-2">
-                  <input
-                    type="text"
-                    value={promoCode}
-                    onChange={(e) => setPromoCode(e.target.value)}
-                    placeholder="Promo code"
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-1 focus:ring-green-500 focus:border-green-500"
-                  />
+                <div className="w-full flex space-x-2">
+                  <div className="w-full">
+                    <Input
+                      value={promoCode}
+                      onChange={(e) => setPromoCode(e.target.value)}
+                      placeholder="Promo code"
+                      className="max-w-full"
+                      icon={<Gift className="w-5 h-5" />}
+                    />
+                  </div>
+
                   <button
                     onClick={handlePromoApply}
-                    className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white text-sm rounded-md transition-colors"
+                    className="px-5 py-2 bg-black/90 hover:bg-black text-white text-sm rounded-md transition-colors"
                   >
                     Apply
                   </button>
                 </div>
                 {promoApplied && (
-                  <div className="mt-2 flex items-center space-x-2 text-sm text-green-600">
-                    <Gift className="w-4 h-4" />
+                  <div className="mt-2 flex items-center space-x-2 text-sm text-green-600 px-1">
                     <span>10% discount applied!</span>
                   </div>
                 )}
@@ -480,10 +497,6 @@ const CheckoutPage: React.FC = () => {
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Shipping</span>
                   <span className="text-gray-900">${shipping.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Tax</span>
-                  <span className="text-gray-900">${tax.toFixed(2)}</span>
                 </div>
                 {promoApplied && (
                   <div className="flex justify-between text-sm">
@@ -500,7 +513,7 @@ const CheckoutPage: React.FC = () => {
               </div>
 
               {/* Security Badge */}
-              <div className="mt-6 flex items-center justify-center space-x-2 text-sm text-gray-500">
+              <div className="mt-12 flex items-center justify-center space-x-2 text-sm text-gray-500">
                 <Lock className="w-4 h-4" />
                 <span>Secure checkout with SSL encryption</span>
               </div>

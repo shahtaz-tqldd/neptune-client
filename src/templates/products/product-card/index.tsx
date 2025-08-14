@@ -91,8 +91,8 @@ const DiscountBadge = ({
   return (
     <div
       className={cn(
-        "bg-black text-white text-sm absolute top-4 right-4 rounded-full flex items-center",
-        "py-3 px-4 whitespace-nowrap overflow-hidden transition-all duration-300 ease-in-out",
+        "bg-black text-white text-sm absolute bottom-2.5 right-3 rounded-full flex items-center",
+        "py-2 px-4 whitespace-nowrap overflow-hidden transition-all duration-300 ease-in-out",
         "w-[44px] group-hover:w-[82px]",
         size == "sm" ? "scale-90" : "scale-100"
       )}
