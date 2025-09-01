@@ -152,9 +152,9 @@ const CheckoutPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="flex gap-8">
           {/* Main Content */}
-          <div className="lg:col-span-2">
+          <div className="flex-1">
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               {/* Step 1: Shipping Information */}
               {currentStep === 1 && (
@@ -265,7 +265,7 @@ const CheckoutPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
-                    <Button size="lg" variant="accent">
+                    <Button size="lg" variant="deccent">
                       Go Back to Cart
                     </Button>
 
@@ -290,7 +290,7 @@ const CheckoutPage: React.FC = () => {
                     <div
                       className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
                         paymentMethod === "card"
-                          ? "border-blue-500 bg-blue-50/50"
+                          ? "border-green-500 bg-green-50/50"
                           : "border-gray-200"
                       }`}
                       onClick={() => setPaymentMethod("card")}
@@ -300,17 +300,17 @@ const CheckoutPage: React.FC = () => {
                           type="radio"
                           checked={paymentMethod === "card"}
                           onChange={() => setPaymentMethod("card")}
-                          className="text-blue-500 focus:ring-blue-500"
+                          className="text-green-500 focus:ring-green-500"
                         />
                         <span className="font-medium text-gray-900">
                           Credit/Debit Card
                         </span>
                       </div>
                       {paymentMethod === "card" && (
-                        <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                        <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
                           <div className="flex items-center space-x-2">
-                            <AlertCircle className="w-5 h-5 text-blue-500" />
-                            <p className="text-sm text-blue-700">
+                            <AlertCircle className="w-5 h-5 text-green-500" />
+                            <p className="text-sm text-green-700">
                               Card payment will be processed securely through
                               Stripe on the next step.
                             </p>
@@ -322,7 +322,7 @@ const CheckoutPage: React.FC = () => {
                     <div
                       className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
                         paymentMethod === "paypal"
-                          ? "border-blue-500 bg-blue-50/50"
+                          ? "border-green-500 bg-green-50/50"
                           : "border-gray-200"
                       }`}
                       onClick={() => setPaymentMethod("paypal")}
@@ -332,7 +332,7 @@ const CheckoutPage: React.FC = () => {
                           type="radio"
                           checked={paymentMethod === "paypal"}
                           onChange={() => setPaymentMethod("paypal")}
-                          className="text-blue-500 focus:ring-blue-500"
+                          className="text-green-500 focus:ring-green-500"
                         />
 
                         <span className="font-medium text-gray-900">
@@ -345,7 +345,7 @@ const CheckoutPage: React.FC = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
                     <Button
                       size="lg"
-                      variant="accent"
+                      variant="deccent"
                       onClick={() => setCurrentStep(1)}
                     >
                       Back
@@ -398,7 +398,7 @@ const CheckoutPage: React.FC = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                     <Button
                       size="lg"
-                      variant="accent"
+                      variant="deccent"
                       onClick={() => setCurrentStep(2)}
                     >
                       Back
@@ -416,7 +416,7 @@ const CheckoutPage: React.FC = () => {
           </div>
 
           {/* Order Summary Sidebar */}
-          <div className="lg:col-span-1">
+          <div className="max-w-[480px] w-full">
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sticky top-8">
               <div className="flex items-center space-x-3 mb-6">
                 <ShoppingCart className="w-6 h-6 text-green-500" />

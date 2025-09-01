@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/shoe.svg" type="image/svg+xml" />
       </head>
       <body className={font.className} cz-shortcut-listen="false">
         {children}

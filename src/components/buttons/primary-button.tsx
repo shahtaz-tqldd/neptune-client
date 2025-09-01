@@ -12,7 +12,8 @@ interface ButtonProps {
     | "accent"
     | "rubix"
     | "alert-primary"
-    | "alert-secondary";
+    | "alert-secondary"
+    | "deccent"
   size?: "xs" | "sm" | "md" | "lg";
   link?: string | null;
   onClick?: () => void;
@@ -26,6 +27,7 @@ const variantClasses = {
   secondary:
     "bg-blue-600/5 text-blue-900 dark:bg-white/10 dark:text-white border border-blue-600/15 dark:border-blue-600/30",
   accent: "border-2 border-green-500 bg-green-50 text-green-600 hover:bg-green-100",
+  deccent: "border-2 border-gray-500 bg-transparent text-black hover:bg-gray-100/80",
   rubix: "bg-green-700/10 text-green-600 font-semibold",
   "alert-primary": "bg-red-500 text-white font-semibold",
   "alert-secondary": "bg-red-500/10 text-red-500 font-semibold",

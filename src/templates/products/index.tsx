@@ -175,7 +175,7 @@ const SizeSelector = ({
               selectedSize?.us === size.us
                 ? "bg-green-500 text-white border-green-500"
                 : size.available
-                ? "bg-gray-50 text-gray-900 border-green-200 hover:border-green-500 hover:bg-green-100"
+                ? "bg-gray-50 text-gray-900 border-green-400 hover:border-green-500 hover:bg-green-100"
                 : "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed line-through"
             }`}
           >

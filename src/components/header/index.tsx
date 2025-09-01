@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Cart } from "@/assets/algo-icons";
 import IconButton from "@/components/buttons/icon-button";
+import Image from "next/image";
 
 const navLinks = [
   { label: "Collections", href: "/collections" },
@@ -15,7 +16,8 @@ const Header = () => {
     <header className="w-full absolute top-0 z-50">
       <div className="container mx-auto px-6 py-8 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold text-teal-900/80">
+        <Link href="/" className="text-xl font-bold text-slate-700 flx gap-2">
+        <Image src="/shoe.svg" height={200} width={200} className="h-10 w-10" alt="logo" />
           ShoeHub
         </Link>
 
