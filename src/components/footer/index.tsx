@@ -92,9 +92,9 @@ const Footer = () => {
             </a>
           </p>
           <div className="flex -ml-3.5">
-            <IconButton icon={Facebook} />
-            <IconButton icon={WhatsApp} />
-            <IconButton icon={Instagram} />
+            <IconButton color="bg-white" icon={Facebook} />
+            <IconButton color="bg-white" icon={WhatsApp} />
+            <IconButton color="bg-white" icon={Instagram} />
           </div>
         </div>
       </div>

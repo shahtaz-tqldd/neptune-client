@@ -18,7 +18,8 @@ const nextConfig: NextConfig = {
       "media.istockphoto.com",
       "static-01.daraz.com.bd",
       "toffpark.com",
-      "cdn.thewirecutter.com"
+      "cdn.thewirecutter.com",
+      "www.gngmodels.com",
     ],
   },
 };

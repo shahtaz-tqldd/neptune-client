@@ -1,9 +1,9 @@
 import React from "react";
 
 import LinkButton from "@/components/buttons/link-button";
-import ProductCrad from "@/templates/products/product-card";
+import ProductCrad from "@/templates/product-details/product-card";
 
-import { DEMO_PRODUCTS } from "@/templates/products/demo-data";
+import { DEMO_PRODUCTS } from "@/templates/product-details/demo-data";
 
 const NewArrivals = () => {
   const products = DEMO_PRODUCTS?.slice(1, 5);

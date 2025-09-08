@@ -1,5 +1,5 @@
 import { productName } from "@/lib/sanitize";
-import { ProductProps } from "@/templates/products/types";
+import { ProductProps } from "@/templates/product-details/types";
 import Image from "next/image";
 import Link from "next/link";
 

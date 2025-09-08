@@ -10,6 +10,7 @@ import {
   Check,
   MapPinned,
   MapPinIcon,
+  CheckCircle,
 } from "lucide-react";
 import Button from "@/components/buttons/primary-button";
 import { Input } from "@/components/ui/input";
@@ -17,6 +18,7 @@ import {
   CityIcon,
   EmailIcon,
   MapIcon,
+  PhoneIcon,
   UserIcon,
   WorldIcon,
 } from "@/assets/algo-icons";
@@ -35,6 +37,7 @@ interface ShippingInfo {
   firstName: string;
   lastName: string;
   email: string;
+  phone: string;
   address: string;
   city: string;
   zipCode: string;
@@ -47,6 +50,7 @@ const CheckoutPage: React.FC = () => {
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
     address: "",
     city: "",
     zipCode: "",
@@ -194,19 +198,33 @@ const CheckoutPage: React.FC = () => {
                       />
                     </div>
                   </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address
-                    </label>
-                    <Input
-                      icon={<EmailIcon size={5} />}
-                      placeholder="example@email.com"
-                      value={shippingInfo.email}
-                      onChange={(e) =>
-                        handleInputChange("email", e.target.value)
-                      }
-                    />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Email Address
+                      </label>
+                      <Input
+                        icon={<EmailIcon size={5} />}
+                        placeholder="example@email.com"
+                        value={shippingInfo.email}
+                        onChange={(e) =>
+                          handleInputChange("email", e.target.value)
+                        }
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Phone Number
+                      </label>
+                      <Input
+                        icon={<PhoneIcon size={5} />}
+                        placeholder="88993216"
+                        value={shippingInfo.phone}
+                        onChange={(e) =>
+                          handleInputChange("phone", e.target.value)
+                        }
+                      />
+                    </div>
                   </div>
 
                   <div>
@@ -264,7 +282,7 @@ const CheckoutPage: React.FC = () => {
                       />
                     </div>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-16">
                     <Button size="lg" variant="deccent">
                       Go Back to Cart
                     </Button>
@@ -361,7 +379,7 @@ const CheckoutPage: React.FC = () => {
               {currentStep === 3 && (
                 <div className="space-y-6">
                   <div className="flex items-center space-x-3 mb-6">
-                    <Check className="w-6 h-6 text-green-500" />
+                    <CheckCircle className="w-6 h-6 text-green-500" />
                     <h4 className="text-xl font-semibold text-gray-900">
                       Review Your Order
                     </h4>
@@ -449,7 +467,11 @@ const CheckoutPage: React.FC = () => {
                         )}
                         {item.color && (
                           <p className="text-sm text-gray-500 flx gap-2">
-                            Color: <div style={{backgroundColor: item.color}} className="h-4 w-4 rounded-full" />
+                            Color:{" "}
+                            <div
+                              style={{ backgroundColor: item.color }}
+                              className="h-4 w-4 rounded-full"
+                            />
                           </p>
                         )}
                       </div>

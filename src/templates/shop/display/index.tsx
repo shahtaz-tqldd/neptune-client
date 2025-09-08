@@ -1,5 +1,5 @@
-import { DEMO_PRODUCTS } from "@/templates/products/demo-data";
-import ProductCard from "@/templates/products/product-card";
+import { DEMO_PRODUCTS } from "@/templates/product-details/demo-data";
+import ProductCard from "@/templates/product-details/product-card";
 import React from "react";
 import { DisplayProps } from "../types";
 

@@ -47,3 +47,9 @@
 .medusa-scroll::-webkit-scrollbar-button {
   display: none;
 }
+
+.text-gradient {
+  background: -webkit-linear-gradient(0deg, #06b373, #14ec6b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

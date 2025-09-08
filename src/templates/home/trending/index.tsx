@@ -3,7 +3,7 @@ import React from "react";
 import NavigateButton from "@/components/buttons/navigate-button";
 import TrendingProductCard from "./trending-product-card";
 
-import { DEMO_PRODUCTS } from "@/templates/products/demo-data";
+import { DEMO_PRODUCTS } from "@/templates/product-details/demo-data";
 
 const Trending = () => {
   const products = DEMO_PRODUCTS.slice(5, 8);

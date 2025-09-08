@@ -3,7 +3,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RangeSlider } from "@/components/ui/slider";
 import Button from "@/components/buttons/primary-button";
 import { FilterProps, FilterState } from "../types";
-import { DEMO_COLORS, DEMO_SIZES } from "@/templates/products/demo-data";
+import { DEMO_COLORS, DEMO_SIZES } from "@/templates/product-details/demo-data";
 
 const sizes = DEMO_SIZES;
 const colors = DEMO_COLORS;

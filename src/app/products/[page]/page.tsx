@@ -1,5 +1,5 @@
 import Layout from "@/layouts/main";
-import ProductPage from "@/templates/products";
+import ProductPage from "@/templates/product-details";
 
 export default function Products() {
   return (

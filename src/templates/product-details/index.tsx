@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PRODUCT_DATA } from "./demo-data";
-import Link from "next/link";
 import Button from "@/components/buttons/primary-button";
 
 // Image Gallery Component

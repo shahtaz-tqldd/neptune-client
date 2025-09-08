@@ -3,13 +3,8 @@ import Link from "next/link";
 import { Cart } from "@/assets/algo-icons";
 import IconButton from "@/components/buttons/icon-button";
 import Image from "next/image";
-
-const navLinks = [
-  { label: "Collections", href: "/collections" },
-  { label: "Shop", href: "/shop" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-];
+import { User } from "lucide-react";
+import { NAV_LINKS } from "./data";
 
 const Header = () => {
   return (
@@ -17,14 +12,20 @@ const Header = () => {
       <div className="container mx-auto px-6 py-8 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="text-xl font-bold text-slate-700 flx gap-2">
-        <Image src="/shoe.svg" height={200} width={200} className="h-10 w-10" alt="logo" />
+          <Image
+            src="/shoe.svg"
+            height={200}
+            width={200}
+            className="h-10 w-10"
+            alt="logo"
+          />
           ShoeHub
         </Link>
 
         {/* Navigation */}
         <div className="flx gap-8">
           <nav className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -34,8 +35,10 @@ const Header = () => {
               </Link>
             ))}
           </nav>
-
-          <IconButton icon={Cart}/>
+          <div className="flx">
+            <IconButton icon={Cart} />
+            <IconButton icon={User} size={20} />
+          </div>
         </div>
       </div>
     </header>

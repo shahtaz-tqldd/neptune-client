@@ -6,9 +6,9 @@ import clsx from "clsx";
 import Button from "@/components/buttons/primary-button";
 import Link from "next/link";
 import { productName } from "@/lib/sanitize";
-import { DEMO_PRODUCTS } from "@/templates/products/demo-data";
+import { DEMO_PRODUCTS } from "@/templates/product-details/demo-data";
 import { formatTime } from "@/lib/date-time";
-import { ProductProps } from "@/templates/products/types";
+import { ProductProps } from "@/templates/product-details/types";
 
 const HotDeals = () => {
   const HOT_DEALS: ProductProps[] = DEMO_PRODUCTS.filter((p) => p.hot_deals);

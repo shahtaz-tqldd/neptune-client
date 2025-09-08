@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@/components/buttons/primary-button";
 
 import { Star } from "@/assets/algo-icons";
-import type { ProductProps } from "@/templates/products/types";
+import type { ProductProps } from "@/templates/product-details/types";
 import Link from "next/link";
 import { productName } from "@/lib/sanitize";
 
