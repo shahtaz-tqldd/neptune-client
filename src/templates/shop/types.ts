@@ -19,6 +19,7 @@ export interface HeaderProps {
   filters: FilterState;
   onClearFilters?: () => void;
   onSearch?: (query: string) => void;
+  setFilters: (filters: FilterState) => void;
   onCategorySelect?: (category: string) => void;
 }
 

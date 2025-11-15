@@ -1,14 +1,18 @@
 import React from "react";
-import AboutHero from "./about-hero";
-import AboutStats from "./stats";
-
-const HERO_IMG = "https://images.unsplash.com/photo-1573072738379-7c640e17ac4e";
+import AboutHero from "./hero";
+import DetailsBanner from "./banner/banner";
+import Faqs from "./faqs/faqs";
+import AboutStory from "./our-story";
+import Reviews from "./review";
 
 const AboutPage = () => {
   return (
     <div>
-      <AboutHero imageUrl={HERO_IMG} />
-      <AboutStats />
+      <AboutHero />
+      <AboutStory />
+      <DetailsBanner />
+      <Reviews />
+      <Faqs />
     </div>
   );
 };

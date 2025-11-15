@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useMemo, useState, useCallback } from "react";
 import Filter from "./filter";
@@ -8,14 +8,14 @@ import { FilterState } from "./types";
 
 const defaultFilters: FilterState = {
   categories: [],
-  priceRange: [0, 100],
+  priceRange: [20, 80],
   sizes: [],
   colors: [],
 };
 
 const ShopPage = () => {
   const initialFilters = {};
-  
+
   // Initialize filters with defaults and any provided initial values
   const [filters, setFilters] = useState<FilterState>({
     ...defaultFilters,
@@ -83,9 +83,9 @@ const ShopPage = () => {
   return (
     <main className="flex gap-12 container pt-28 pb-20">
       <aside className="max-w-[300px] w-full md:block hidden sticky top-8 h-fit">
-        <Filter 
-          filters={filters} 
-          setFilters={setFilters} 
+        <Filter
+          filters={filters}
+          setFilters={setFilters}
           defaultFilters={defaultFilters}
           initialFilters={initialFilters}
           onFiltersChange={handleFiltersChange}
@@ -93,14 +93,15 @@ const ShopPage = () => {
         />
       </aside>
       <section className="flex-1 space-y-8">
-        <Header 
-          filters={appliedFilters} 
+        <Header
+          filters={appliedFilters}
           hasActiveFilters={hasActiveFilters}
+          setFilters={setFilters}
           onClearFilters={handleClearAllFilters}
           onSearch={handleSearch}
           onCategorySelect={handleCategorySelect}
         />
-        <Display 
+        <Display
           filters={appliedFilters}
           searchQuery={searchQuery}
           selectedCategory={selectedCategory}

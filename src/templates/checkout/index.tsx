@@ -29,7 +29,7 @@ interface CartItem {
   price: number;
   quantity: number;
   image: string;
-  color?: string;
+  color?: { name: string; value: string };
   size?: string;
 }
 
@@ -69,15 +69,8 @@ const CheckoutPage: React.FC = () => {
       quantity: 1,
       image:
         "https://img.kwcdn.com/product/fancy/49bd82d7-2205-44a1-bde4-b5d5eb2b1b8d.jpg",
-      color: "#0eb56aff",
-    },
-    {
-      id: "2",
-      name: " Engineered ZoomX Edge 2",
-      price: 399.99,
-      quantity: 1,
-      image:
-        "https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/00/2419663/1.jpg?2369",
+
+      color: { value: "#0eb56aff", name: "Forest Green" },
       size: "42",
     },
   ];
@@ -124,17 +117,17 @@ const CheckoutPage: React.FC = () => {
               {[1, 2, 3].map((step) => (
                 <div key={step} className="flex items-center">
                   <div
-                    className={`flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all duration-300 ${
+                    className={`center w-9 h-9 rounded-full tr ${
                       currentStep >= step
-                        ? "bg-green-500 border-green-500 text-white"
-                        : "border-gray-300 text-gray-400"
+                        ? "bg-primary text-white"
+                        : "bg-gray-100 text-gray-400"
                     } ${isStepComplete(step) ? "bg-green-600" : ""}`}
                   >
                     {isStepComplete(step) ? <Check size={16} /> : step}
                   </div>
                   <span
                     className={`ml-2 text-sm font-medium ${
-                      currentStep >= step ? "text-green-600" : "text-gray-400"
+                      currentStep >= step ? "text-primary" : "text-gray-400"
                     }`}
                   >
                     {step === 1
@@ -164,10 +157,8 @@ const CheckoutPage: React.FC = () => {
               {currentStep === 1 && (
                 <div className="space-y-6">
                   <div className="flex items-center space-x-3 mb-6">
-                    <Truck className="w-6 h-6 text-green-500" />
-                    <h4 className="text-xl font-semibold text-gray-900">
-                      Shipping Information
-                    </h4>
+                    <Truck className="w-6 h-6 text-primary" />
+                    <h4>Shipping Information</h4>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -283,7 +274,7 @@ const CheckoutPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-16">
-                    <Button size="lg" variant="deccent">
+                    <Button size="lg" variant="accent">
                       Go Back to Cart
                     </Button>
 
@@ -298,18 +289,16 @@ const CheckoutPage: React.FC = () => {
               {currentStep === 2 && (
                 <div className="space-y-6">
                   <div className="flex items-center space-x-3 mb-6">
-                    <CreditCard className="w-6 h-6 text-green-500" />
-                    <h4 className="text-xl font-semibold text-gray-900">
-                      Payment Method
-                    </h4>
+                    <CreditCard className="w-6 h-6 text-primary" />
+                    <h4>Payment Method</h4>
                   </div>
 
                   <div className="space-y-4">
                     <div
                       className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
                         paymentMethod === "card"
-                          ? "border-green-500 bg-green-50/50"
-                          : "border-gray-200"
+                          ? "border-primary/60 bg-primary/5"
+                          : "border-gray-300"
                       }`}
                       onClick={() => setPaymentMethod("card")}
                     >
@@ -325,13 +314,13 @@ const CheckoutPage: React.FC = () => {
                         </span>
                       </div>
                       {paymentMethod === "card" && (
-                        <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                        <div className="mt-4 p-4 bg-primary/10 border border-primary/30 rounded-lg">
                           <div className="flex items-center space-x-2">
-                            <AlertCircle className="w-5 h-5 text-green-500" />
-                            <p className="text-sm text-green-700">
+                            <AlertCircle className="w-5 h-5 text-primary" />
+                            <span className="text-primary text-sm">
                               Card payment will be processed securely through
                               Stripe on the next step.
-                            </p>
+                            </span>
                           </div>
                         </div>
                       )}
@@ -340,8 +329,8 @@ const CheckoutPage: React.FC = () => {
                     <div
                       className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
                         paymentMethod === "paypal"
-                          ? "border-green-500 bg-green-50/50"
-                          : "border-gray-200"
+                          ? "border-primary/60 bg-primary/5"
+                          : "border-gray-300"
                       }`}
                       onClick={() => setPaymentMethod("paypal")}
                     >
@@ -363,7 +352,7 @@ const CheckoutPage: React.FC = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
                     <Button
                       size="lg"
-                      variant="deccent"
+                      variant="accent"
                       onClick={() => setCurrentStep(1)}
                     >
                       Back
@@ -379,10 +368,8 @@ const CheckoutPage: React.FC = () => {
               {currentStep === 3 && (
                 <div className="space-y-6">
                   <div className="flex items-center space-x-3 mb-6">
-                    <CheckCircle className="w-6 h-6 text-green-500" />
-                    <h4 className="text-xl font-semibold text-gray-900">
-                      Review Your Order
-                    </h4>
+                    <CheckCircle className="w-6 h-6 text-primary" />
+                    <h4>Review Your Order</h4>
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-6 space-y-4">
@@ -403,9 +390,7 @@ const CheckoutPage: React.FC = () => {
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-6">
-                    <h4 className="font-medium text-gray-900 mb-2">
-                      Payment Method
-                    </h4>
+                    <h4>Payment Method</h4>
                     <p className="text-gray-600">
                       {paymentMethod === "card"
                         ? "Credit/Debit Card (via Stripe)"
@@ -416,7 +401,7 @@ const CheckoutPage: React.FC = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                     <Button
                       size="lg"
-                      variant="deccent"
+                      variant="accent"
                       onClick={() => setCurrentStep(2)}
                     >
                       Back
@@ -437,10 +422,8 @@ const CheckoutPage: React.FC = () => {
           <div className="max-w-[480px] w-full">
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sticky top-8">
               <div className="flex items-center space-x-3 mb-6">
-                <ShoppingCart className="w-6 h-6 text-green-500" />
-                <h4 className="text-xl font-semibold text-gray-900">
-                  Order Summary
-                </h4>
+                <ShoppingCart className="w-6 h-6 text-primary" />
+                <h4>Order Summary</h4>
               </div>
 
               {/* Cart Items */}
@@ -452,14 +435,10 @@ const CheckoutPage: React.FC = () => {
                       alt={item.name}
                       className="w-16 h-16 object-cover rounded-lg"
                     />
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-gray-900 truncate">
-                        {item.name}
-                      </p>
-                      <div className="mt-2 space-y-1">
-                        <p className="text-sm text-gray-500">
-                          Qty: {item.quantity}
-                        </p>
+                    <div className="flex-1 min-w-0 space-y-1">
+                      <h5 className="font-medium truncate">{item.name}</h5>
+                      <p className="text-sm">Quantity: {item.quantity}</p>
+                      <div className="flx gap-4">
                         {item.size && (
                           <p className="text-sm text-gray-500">
                             Size: {item.size}
@@ -469,9 +448,10 @@ const CheckoutPage: React.FC = () => {
                           <p className="text-sm text-gray-500 flx gap-2">
                             Color:{" "}
                             <div
-                              style={{ backgroundColor: item.color }}
-                              className="h-4 w-4 rounded-full"
+                              style={{ backgroundColor: item.color?.value }}
+                              className="h-2.5 w-2.5 rounded-full"
                             />
+                            <span>{item.color.name}</span>
                           </p>
                         )}
                       </div>
@@ -498,7 +478,7 @@ const CheckoutPage: React.FC = () => {
 
                   <button
                     onClick={handlePromoApply}
-                    className="px-5 py-2 bg-black/90 hover:bg-black text-white text-sm rounded-md transition-colors"
+                    className="px-5 py-2 bg-primary hover:bg-black text-white text-sm rounded-lg tr"
                   >
                     Apply
                   </button>

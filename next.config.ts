@@ -20,6 +20,8 @@ const nextConfig: NextConfig = {
       "toffpark.com",
       "cdn.thewirecutter.com",
       "www.gngmodels.com",
+      "images.unsplash.com",
+      "plus.unsplash.com",
     ],
   },
 };

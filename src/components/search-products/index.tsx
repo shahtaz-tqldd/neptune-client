@@ -1,6 +1,7 @@
 "use client";
 
 import { SearchIcon } from "@/assets/algo-icons";
+import { LucideMessageSquareDot } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 export default function SearchProducts() {
@@ -18,10 +19,10 @@ export default function SearchProducts() {
   return (
     <button
       className={`
-        fixed left-8 z-50
-        flx gap-1.5 border-t-2 border-yellow-400
+        fixed right-8 z-50 h-14 w-14 center
+        border-2 border-emerald-900/30
         transition-all duration-500 ease-in-out text-black/75
-        bg-white/80 backdrop-blur-sm py-3 pr-5 pl-3 rounded-full shadow-xl font-medium
+        bg-emerald-900/80 backdrop-blur-sm rounded-full shadow-xl font-medium
         ${
           visible
             ? "bottom-6 translate-y-0 opacity-100"
@@ -29,8 +30,7 @@ export default function SearchProducts() {
         }
       `}
     >
-      <SearchIcon size={5.5} className="translate-y-0.5" />
-      Search Shoes
+      <LucideMessageSquareDot size={20} className="text-white" />
     </button>
   );
 }

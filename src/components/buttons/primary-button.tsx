@@ -23,14 +23,14 @@ interface ButtonProps {
 }
 
 const variantClasses = {
-  primary: "bg-secondary text-white group/button",
+  primary: "bg-emerald-900 text-white group/button",
   secondary:
     "bg-blue-600/5 text-blue-900 dark:bg-white/10 dark:text-white border border-blue-600/15 dark:border-blue-600/30",
-  accent: "border-2 border-green-500 bg-green-50 text-green-600 hover:bg-green-100",
+  accent: "border-2 border-primary/60 bg-primary/5 text-primary hover:bg-primary/10",
   deccent: "border-2 border-gray-500 bg-transparent text-black hover:bg-gray-100/80",
-  rubix: "bg-green-700/10 text-green-600 font-semibold",
+  rubix: "bg-primary/10 hover:bg-primary/15 text-primary font-medium tr",
   "alert-primary": "bg-red-500 text-white font-semibold",
-  "alert-secondary": "bg-red-500/10 text-red-500 font-semibold",
+  "alert-secondary": "bg-red-500/10 hover:bg-red-500/15 text-red-500 font-medium tr",
 };
 
 const sizeClasses = {

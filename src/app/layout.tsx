@@ -11,9 +11,9 @@ const font = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "ShoeHub | Online Shoes Store",
+  title: "nylo | online shoe store",
   description:
-    "ShoeHub is a online shoe store for selling sneaker, modern and aesthetic shoes.",
+    "nylo is a online shoe store for selling sneaker, modern and aesthetic shoes.",
 };
 
 export default function RootLayout({
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/shoe.svg" type="image/svg+xml" />
+        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
       </head>
       <body className={font.className} cz-shortcut-listen="false">
         {children}

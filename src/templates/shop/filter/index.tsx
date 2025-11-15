@@ -100,21 +100,24 @@ const Filter: React.FC<FilterProps> = ({
     onApplyFilters?.(filters);
   }, [filters, onApplyFilters]);
 
-  // Clear all filters
-  const handleClearAll = useCallback(() => {
-    const clearedFilters = { ...defaultFilters };
-    setFilters(clearedFilters);
-    setLastAppliedFilters(clearedFilters);
-    setHasUnappliedChanges(false);
-    onFiltersChange?.(clearedFilters);
-    onApplyFilters?.(clearedFilters);
-  }, [onFiltersChange, onApplyFilters, defaultFilters, setFilters]);
-
   return (
     <div className="space-y-8">
       {/* Category */}
       <div>
-        <h4 className="mb-3 font-medium text-gray-900">Category</h4>
+        <div className="flbx">
+          <h4 className="mb-3 font-medium text-gray-900">Category</h4>
+          {hasUnappliedChanges && (
+            <Button
+              size="xs"
+              variant="rubix"
+              className="px-4"
+              onClick={handleApplyFilters}
+              disabled={!filtersChanged}
+            >
+              Apply Filter
+            </Button>
+          )}
+        </div>
         <div className="space-y-3">
           {["Men", "Women", "Kids"].map((category) => (
             <label
@@ -167,10 +170,10 @@ const Filter: React.FC<FilterProps> = ({
             <button
               key={size}
               onClick={() => handleSizeToggle(size)}
-              className={`h-8 w-8 rounded-full border-2 text-sm pt-[1px] font-medium transition-all duration-200 ${
+              className={`h-9 w-9 rounded-full text-sm font-medium tr ${
                 filters.sizes.includes(size)
-                  ? "bg-green-500 text-white border-green-500 shadow-md"
-                  : "bg-gray-50 text-gray-700 border-gray-200 hover:border-gray-300 hover:bg-gray-100"
+                  ? "bg-primary text-white shadow-md"
+                  : "text-gray-700 bg-gray-100 hover:bg-gray-200"
               }`}
             >
               {size}
@@ -187,37 +190,25 @@ const Filter: React.FC<FilterProps> = ({
       {/* Color */}
       <div>
         <h4 className="mb-3 font-medium text-gray-900">Color</h4>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2">
           {colors.map((color) => (
             <button
               key={color.name}
               onClick={() => handleColorToggle(color.name)}
               title={color.name}
-              className="w-7 h-7 rounded-full border-2 border-black/10 hover:scale-105 tr"
-              style={{
-                backgroundColor: color.value,
-                ...(color.name === "Black" && { borderColor: "#cfcfcfff" }),
-              }}
+              className={`flx gap-2 py-1 pl-2 pr-2.5 rounded-lg ${
+                filters.colors.includes(color?.name)
+                  ? "bg-primary/15 text-primary"
+                  : "bg-gray-100 hover:bg-gray-200 tr"
+              }`}
             >
-              {filters.colors.includes(color.name) && (
-                <div className="w-full h-full rounded-full flex items-center justify-center">
-                  <svg
-                    className={`w-4 h-4 ${
-                      color.name === "White" || color.name === "Yellow"
-                        ? "text-gray-800"
-                        : "text-white"
-                    }`}
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-              )}
+              <span
+                className="h-2.5 w-2.5 rounded-full"
+                style={{
+                  backgroundColor: color.value,
+                }}
+              ></span>
+              <span className="text-sm">{color.name}</span>
             </button>
           ))}
         </div>
@@ -226,29 +217,6 @@ const Filter: React.FC<FilterProps> = ({
             Selected: {filters.colors.join(", ")}
           </div>
         )}
-      </div>
-
-      {/* Action Buttons */}
-      <div className="flex gap-3 pt-4 border-t border-gray-200">
-        <Button
-          size="xs"
-          variant="rubix"
-          className="w-1/2 px-5"
-          onClick={handleApplyFilters}
-          disabled={!filtersChanged}
-        >
-          {hasUnappliedChanges ? "Apply Filters" : "Filters Applied"}
-        </Button>
-
-        <Button
-          size="xs"
-          variant="alert-secondary"
-          className="w-1/2 px-5"
-          onClick={handleClearAll}
-          disabled={!hasActiveFilters}
-        >
-          Clear All
-        </Button>
       </div>
     </div>
   );
