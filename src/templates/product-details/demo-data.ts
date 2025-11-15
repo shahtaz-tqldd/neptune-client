@@ -54,7 +54,7 @@ export const DEMO_PRODUCTS = [
     description:
       "Turn back time with retro-inspired cushioning and a sleek design that never goes out of style.",
     image:
-      "https://www.number1shopping.com/public/uploads/all/INojNpQcbYgqmnBmm2r4wtbPzL6ezrPyrEfoVOQ4.png",
+      "https://gleathershop.com/wp-content/uploads/2025/06/09-1080x1080.webp",
     numReviews: 120,
     is_hero_product: false,
     offerEndsIn: 0,

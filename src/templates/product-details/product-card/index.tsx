@@ -53,8 +53,9 @@ const ProductCard = ({ product, size = "md" }: ProductCardProps) => {
         <Image
           src={product.image}
           alt={product.name}
-          fill
-          className="object-cover bg-gray-200 transition-transform duration-300 ease-in-out group-hover:scale-105 will-change-transform [transform:translateZ(0)]"
+          height={400}
+          width={400}
+          className="w-full h-full object-cover bg-gray-200 tr ease-in-out group-hover:scale-105 will-change-transform [transform:translateZ(0)]"
         />
         <DiscountBadge discount={product?.discount} size={size} />
       </div>
@@ -64,7 +65,7 @@ const ProductCard = ({ product, size = "md" }: ProductCardProps) => {
 
       {/* CTA + Price */}
       <div className="flbx mt-4">
-        <h5 className={cn("font-semibold text-red-600", styles.price)}>
+        <h5 className={cn("font-semibold text-primary", styles.price)}>
           {product.price}
         </h5>
         <NavigateButton

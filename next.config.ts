@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     domains: [
       "img.kwcdn.com",
       "images.fashiontiy.com",
-      "www.number1shopping.com",
+      "gleathershop.com",
       "ng.jumia.is",
       "ecommercephotographyindia.com",
       "i.pinimg.com",

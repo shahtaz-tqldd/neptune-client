@@ -28,7 +28,7 @@ const Trending = () => {
             pick the bestseller
           </p>
           <h1 className="max-w-lg">
-            Discover Our <span className="text-green-500">Trending</span> Shoes
+            Discover Our <span className="text-emerald-500">Trending</span> Shoes
           </h1>
           <p className="text-2xl">
             Our latest collection combines comfort and cutting-edge design. Step

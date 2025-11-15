@@ -1,18 +1,21 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import NavigateButton from "@/components/buttons/navigate-button";
 
 import { DEMO_COLLECTIONS } from "./demo-data";
+import { useRouter } from "next/navigation";
 
 const NewCollections = () => {
   const collections_data = DEMO_COLLECTIONS;
+  const router = useRouter();
   return (
     <section className="py-20 ">
       <div className="grid grid-cols-2 gap-x-16 container">
         <div className="space-y-16">
           <h1>
-            See our brand{" "}
-            <span className="text-green-500"> new collections</span>
+            See our <span className="text-emerald-500">brand new</span>{" "}
+            collections
           </h1>
           <div className="relative">
             <Image
@@ -52,7 +55,9 @@ const NewCollections = () => {
             Most of our new shoes are for the open to try and enlighten your end
             of trips
           </p>
-          <NavigateButton>More Collections</NavigateButton>
+          <NavigateButton onClick={() => router.push("/collections")}>
+            More Collections
+          </NavigateButton>
         </div>
       </div>
     </section>

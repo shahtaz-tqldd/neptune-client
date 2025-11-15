@@ -10,10 +10,10 @@ const Details = () => {
   return (
     <section className="py-24">
       <p className="uppercase tracking-[2px] text-lg text-center">
-        Why would you choose us
+        Why choose us
       </p>
       <h2 className="text-center mb-16 mt-4">
-        Details Down to <span className="text-green-500">Sneaker Level</span>
+        Details Down to <span className="text-emerald-500">Sneaker Level</span>
       </h2>
 
       <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 relative z-10">
