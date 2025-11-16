@@ -276,7 +276,7 @@ export default function DataTable<T extends object>({
                       <TableCell className="w-12 px-4 text-center">
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="sm" className="p-1">
+                            <Button variant="rubix" size="sm" className="p-1">
                               <MoreHorizontal className="h-4 w-4" />
                             </Button>
                           </DropdownMenuTrigger>

@@ -6,15 +6,7 @@ import Link from "next/link";
 interface ButtonProps {
   children: React.ReactNode;
   className?: string;
-  variant?:
-    | "primary"
-    | "secondary"
-    | "accent"
-    | "rubix"
-    | "alert-primary"
-    | "alert-secondary"
-    | "deccent"
-    | "ghost";
+  variant?: "primary" | "accent" | "rubix" | "alert";
   size?: "xs" | "sm" | "md" | "lg";
   link?: string | null;
   onClick?: () => void;
@@ -25,14 +17,10 @@ interface ButtonProps {
 
 const variantClasses = {
   primary: "bg-emerald-900 text-white group/button",
-  secondary:
-    "bg-blue-600/5 text-blue-900 dark:bg-white/10 dark:text-white border border-blue-600/15 dark:border-blue-600/30",
-  accent: "border-2 border-primary/60 bg-primary/5 text-primary hover:bg-primary/10",
-  deccent: "border-2 border-gray-500 bg-transparent text-black hover:bg-gray-100/80",
+  accent:
+    "border-2 border-primary/60 bg-primary/5 text-primary hover:bg-primary/10",
   rubix: "bg-primary/10 hover:bg-primary/15 text-primary font-medium tr",
-  "alert-primary": "bg-red-500 text-white font-semibold",
-  "alert-secondary": "bg-red-500/10 hover:bg-red-500/15 text-red-500 font-medium tr",
-  ghost: "bg-gray-100"
+  alert: "bg-red-500/10 hover:bg-red-500/15 text-red-500 font-medium tr",
 };
 
 const sizeClasses = {
@@ -67,7 +55,9 @@ const Button: React.FC<ButtonProps> = ({
 
   const arrowClasses = cn(
     "transition-all -ml-2 duration-300",
-    isArrow ? "opacity-0 group-hover/button:opacity-100 group-hover/button:translate-x-1" : "hidden",
+    isArrow
+      ? "opacity-0 group-hover/button:opacity-100 group-hover/button:translate-x-1"
+      : "hidden",
     size === "xs" ? "translate-x-[-2px]" : "translate-x-[-0.25rem]"
   );
 

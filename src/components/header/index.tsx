@@ -8,9 +8,12 @@ import Image from "next/image";
 import { User } from "lucide-react";
 import { NAV_LINKS } from "./data";
 import { useRouter } from "next/navigation";
+import CartDrawer from "./cart-drawer";
+import AuthDialog from "./auth-dialog";
 
 const Header = () => {
   const router = useRouter();
+  const [cartOpen, setCartOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -23,10 +26,14 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const isLoggedIn = true;
+
   return (
     <header
       className={`w-full fixed top-0 z-50 transition-all border-b  duration-300 ${
-        scrolled ? "bg-white/75 backdrop-blur-md border-b-primary/20" : "bg-transparent border-b-transparent"
+        scrolled
+          ? "bg-white/75 backdrop-blur-md border-b-primary/20"
+          : "bg-transparent border-b-transparent"
       }`}
     >
       <div className="container mx-auto px-6 py-2 flex items-center justify-between">
@@ -36,7 +43,7 @@ const Header = () => {
             src="/logo.svg"
             height={200}
             width={200}
-            className="h-16 w-16 -rotate-30 -ml-4"
+            className="h-14 w-14 -rotate-30 -ml-4"
             alt="logo"
           />
           <span className="text-3xl font-semibold text-emerald-900">nylo</span>
@@ -57,15 +64,20 @@ const Header = () => {
           </nav>
 
           <div className="flx">
-            <IconButton icon={Cart} />
-            <IconButton
-              icon={User}
-              size={20}
-              onClick={() => router.push("/my-profile")}
-            />
+            <IconButton icon={Cart} onClick={() => setCartOpen(true)} />
+            {isLoggedIn ? (
+              <AuthDialog />
+            ) : (
+              <IconButton
+                icon={User}
+                size={20}
+                onClick={() => router.push("/my-profile")}
+              />
+            )}
           </div>
         </div>
       </div>
+      <CartDrawer open={cartOpen} setOpen={setCartOpen} />
     </header>
   );
 };

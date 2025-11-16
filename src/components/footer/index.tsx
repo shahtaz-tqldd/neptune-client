@@ -2,6 +2,27 @@ import { Facebook, Instagram, WhatsApp } from "@/assets/algo-icons";
 import React from "react";
 import IconButton from "../buttons/icon-button";
 
+const footerLinks = {
+  quickLinks: [
+    { id: 1, label: "Home", href: "/" },
+    { id: 2, label: "Collections", href: "/collections" },
+    { id: 3, label: "Shop", href: "/shop" },
+    { id: 4, label: "About Us", href: "/about" },
+    { id: 4, label: "Contact Us", href: "/contact-us" },
+  ],
+  importantLinks: [
+    { id: 1, label: "Privacy Policy", href: "/privacy-policy" },
+    { id: 2, label: "Terms & Conditions", href: "/terms" },
+    { id: 3, label: "FAQ", href: "/faq" },
+  ],
+};
+
+const socialLinks = [
+  { id: 1, icon: Facebook, href: "#" },
+  { id: 2, icon: WhatsApp, href: "#" },
+  { id: 3, icon: Instagram, href: "#" },
+];
+
 const Footer = () => {
   return (
     <footer className="relative overflow-hidden">
@@ -9,9 +30,12 @@ const Footer = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-[#DFF2EB] via-[#B9E5E8] to-[#DFF2EB] opacity-40 blur-3xl pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 container px-6 py-16 flex gap-10">
+      <div
+        className="relative z-10 container px-6 py-16 
+          flex flex-col md:flex-row gap-10 md:gap-16"
+      >
         {/* Logo & Intro */}
-        <div className="max-w-md flex flex-col justify-between h-full gap-10">
+        <div className="max-w-md flex flex-col justify-between gap-10 text-center md:text-left">
           <div>
             <h4 className="text-2xl font-bold tracking-wide mb-4 text-teal-900/80">
               nylo
@@ -22,77 +46,52 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Bottom Note */}
           <div className="text-sm text-gray-500">
             &copy; {new Date().getFullYear()} nylo. All rights reserved.
           </div>
         </div>
 
         {/* Quick Links */}
-        <div className="flex-1">
+        <div className="flex-1 text-center md:text-left">
           <h4 className="text-lg font-semibold text-black/60 mb-4">
             Quick Links
           </h4>
+
           <ul className="space-y-2 text-gray-400">
-            <li>
-              <a href="#" className="hover:text-primary tr">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-primary tr">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-primary tr">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-primary tr">
-                Blog
-              </a>
-            </li>
+            {footerLinks.quickLinks.map((item) => (
+              <li key={item.id}>
+                <a href={item.href} className="hover:text-primary tr">
+                  {item.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* Important Links */}
-        <div className="flex-1">
+        <div className="flex-1 text-center md:text-left">
           <h4 className="text-lg font-semibold text-black/60 mb-4">
             Important Links
           </h4>
           <ul className="space-y-2 text-gray-400">
-            <li>
-              <a href="#" className="hover:text-primary tr">
-                Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-primary tr">
-                Terms & Conditions
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-primary tr">
-                FAQ
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-primary tr">
-                Support
-              </a>
-            </li>
+            {footerLinks.importantLinks.map((item) => (
+              <li key={item.id}>
+                <a href={item.href} className="hover:text-primary tr">
+                  {item.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* Contact & Social */}
-        <div className="max-w-md">
+        <div className="max-w-md mx-auto md:mx-0 text-center md:text-left">
           <h4 className="text-lg font-semibold text-black/60 mb-4">
             Contact Us
           </h4>
-          <div className="space-y-2.5">
-            <p className="text-sm flx gap-3 text-gray-400">
+
+          <div className="space-y-2.5 text-gray-400">
+            <p className="text-sm flx gap-3 justify-center md:justify-start">
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -112,9 +111,10 @@ const Footer = () => {
                   d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                 />
               </svg>
-              <span>123 Main Street, Dhaka, Bangladesh</span>
+              123 Main Street, Dhaka, Bangladesh
             </p>
-            <p className="text-sm text-gray-400 flx gap-3">
+
+            <p className="text-sm flx gap-3 justify-center md:justify-start">
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -132,7 +132,8 @@ const Footer = () => {
                 +880 1234 56789
               </a>
             </p>
-            <p className="text-sm text-gray-400 flx gap-3">
+
+            <p className="text-sm flx gap-3 justify-center md:justify-start">
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -154,10 +155,12 @@ const Footer = () => {
               </a>
             </p>
           </div>
-          <div className="flex -ml-3.5 mt-6">
-            <IconButton color="bg-white" icon={Facebook} />
-            <IconButton color="bg-white" icon={WhatsApp} />
-            <IconButton color="bg-white" icon={Instagram} />
+
+          {/* Social */}
+          <div className="flex justify-center md:justify-start -ml-3.5 mt-6">
+            {socialLinks.map((s) => (
+              <IconButton key={s.id} icon={s.icon} color="bg-white" />
+            ))}
           </div>
         </div>
       </div>

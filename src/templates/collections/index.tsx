@@ -32,7 +32,7 @@ export default function CollectionsPage() {
             return (
               <div
                 key={index}
-                className="h-[560px] group relative overflow-hidden rounded-3xl cursor-pointer"
+                className="h-[640px] group relative overflow-hidden rounded-3xl cursor-pointer"
                 onMouseEnter={() => setHoveredId(collection.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >

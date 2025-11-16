@@ -86,7 +86,7 @@ const Header: React.FC<HeaderProps> = ({
               {/* Mobile Reset Button */}
               <Button
                 size="xs"
-                variant="alert-secondary"
+                variant="alert"
                 className="px-4 md:hidden"
                 onClick={handleClearAll}
               >
@@ -141,7 +141,7 @@ const Header: React.FC<HeaderProps> = ({
           {/* Desktop Reset Button */}
           <Button
             size="xs"
-            variant="alert-secondary"
+            variant="alert"
             className="pr-6 pl-[18px] hidden md:block h-fit text-nowrap"
             onClick={handleClearAll}
           >

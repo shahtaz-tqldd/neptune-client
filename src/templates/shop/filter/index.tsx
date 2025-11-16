@@ -105,7 +105,7 @@ const Filter: React.FC<FilterProps> = ({
       {/* Category */}
       <div>
         <div className="flbx">
-          <h4 className="mb-3 font-medium text-gray-900">Category</h4>
+          <h4 className="mb-3">Category</h4>
           {hasUnappliedChanges && (
             <Button
               size="xs"

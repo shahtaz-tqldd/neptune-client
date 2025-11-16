@@ -82,7 +82,7 @@ const ShopPage = () => {
 
   return (
     <main className="flex gap-12 container pt-28 pb-20">
-      <aside className="max-w-[300px] w-full md:block hidden sticky top-8 h-fit">
+      <aside className="max-w-[300px] w-full md:block hidden sticky top-24 h-fit">
         <Filter
           filters={filters}
           setFilters={setFilters}

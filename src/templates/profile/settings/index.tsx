@@ -104,7 +104,7 @@ const SettingsPage = () => {
                       </p>
                     </div>
                   </div>
-                  <Button size="xs" variant="alert-secondary">
+                  <Button size="xs" variant="alert">
                     Remove
                   </Button>
                 </div>
