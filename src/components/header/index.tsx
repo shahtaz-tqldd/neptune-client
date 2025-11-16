@@ -1,15 +1,35 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Cart } from "@/assets/algo-icons";
 import IconButton from "@/components/buttons/icon-button";
 import Image from "next/image";
 import { User } from "lucide-react";
 import { NAV_LINKS } from "./data";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const router = useRouter();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) setScrolled(true);
+      else setScrolled(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="w-full absolute top-0 z-50">
-      <div className="container mx-auto px-6 py-3 flex items-center justify-between">
+    <header
+      className={`w-full fixed top-0 z-50 transition-all border-b  duration-300 ${
+        scrolled ? "bg-white/75 backdrop-blur-md border-b-primary/20" : "bg-transparent border-b-transparent"
+      }`}
+    >
+      <div className="container mx-auto px-6 py-2 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flx">
           <Image
@@ -35,9 +55,14 @@ const Header = () => {
               </Link>
             ))}
           </nav>
+
           <div className="flx">
             <IconButton icon={Cart} />
-            <IconButton icon={User} size={20} />
+            <IconButton
+              icon={User}
+              size={20}
+              onClick={() => router.push("/my-profile")}
+            />
           </div>
         </div>
       </div>

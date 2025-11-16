@@ -14,6 +14,7 @@ interface ButtonProps {
     | "alert-primary"
     | "alert-secondary"
     | "deccent"
+    | "ghost";
   size?: "xs" | "sm" | "md" | "lg";
   link?: string | null;
   onClick?: () => void;
@@ -31,6 +32,7 @@ const variantClasses = {
   rubix: "bg-primary/10 hover:bg-primary/15 text-primary font-medium tr",
   "alert-primary": "bg-red-500 text-white font-semibold",
   "alert-secondary": "bg-red-500/10 hover:bg-red-500/15 text-red-500 font-medium tr",
+  ghost: "bg-gray-100"
 };
 
 const sizeClasses = {

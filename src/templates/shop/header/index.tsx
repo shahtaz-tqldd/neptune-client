@@ -48,8 +48,8 @@ const Header: React.FC<HeaderProps> = ({
             <input
               value={searchInput}
               onChange={handleSearchChange}
-              placeholder="Search shoe"
-              className="py-2 pl-10 pr-4 rounded-full w-full bg-gray-50 border border-primary/20 focus:border-primary focus:outline-none tr"
+              placeholder="Search shoes"
+              className="py-2 pl-10 pr-4 rounded-lg w-full bg-gray-50 border border-primary/20 focus:border-primary focus:outline-none tr"
             />
           </div>
           <button className="md:hidden flex bg-gray-100 text-primary h-11 w-11 rounded-full items-center justify-center">
