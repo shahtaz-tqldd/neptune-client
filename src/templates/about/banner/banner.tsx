@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { colorMap, DETAILS_DATA } from "./data";
+import Title from "@/components/ui/title";
 
 export default function DetailsBanner() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -43,10 +44,10 @@ export default function DetailsBanner() {
         <p className="text-sm uppercase tracking-[3px] text-gray-400 mb-4">
           Why Choose Us
         </p>
-        <h2 className="text-5xl md:text-6xl font-light">
+        <Title>
           Details Down to{" "}
           <span className="text-emerald-500">Sneaker Level</span>
-        </h2>
+        </Title>
       </div>
 
       <div className="">

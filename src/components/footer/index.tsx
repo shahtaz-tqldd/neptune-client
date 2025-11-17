@@ -8,7 +8,7 @@ const footerLinks = {
     { id: 2, label: "Collections", href: "/collections" },
     { id: 3, label: "Shop", href: "/shop" },
     { id: 4, label: "About Us", href: "/about" },
-    { id: 4, label: "Contact Us", href: "/contact-us" },
+    { id: 5, label: "Contact Us", href: "/contact-us" },
   ],
   importantLinks: [
     { id: 1, label: "Privacy Policy", href: "/privacy-policy" },

@@ -5,13 +5,12 @@
 
 @theme {
   --color-primary: #006045;
-  --color-secondary: #393E46;
+  --color-secondary: #393e46;
   --color-accent: #f3f3f3;
 }
 
 html,
 body {
-
   width: 100%;
   margin: 0;
   padding: 0;
@@ -25,20 +24,6 @@ body {
 button,
 a {
   cursor: pointer;
-}
-
-h1 {
-  font-size: 60px;
-  color: var(--color-secondary);
-  font-weight: 800;
-  line-height: 72px;
-}
-
-h2 {
-  font-size: 44px;
-  color: var(--color-secondary);
-  font-weight: 700;
-  line-height: 56px;
 }
 
 h3 {

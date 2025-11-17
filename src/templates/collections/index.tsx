@@ -3,6 +3,7 @@ import Button from "@/components/buttons/primary-button";
 import React, { useState } from "react";
 import { COLLECTIONS } from "./demo-data";
 import Image from "next/image";
+import Title from "@/components/ui/title";
 
 export default function CollectionsPage() {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
@@ -11,21 +12,21 @@ export default function CollectionsPage() {
     <div className="min-h-screen pt-32 pb-16">
       <div className="container">
         {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-sm uppercase tracking-[3px] text-gray-400 mb-4">
+        <div className="text-center space-y-4 flex flex-col items-center mx-auto  max-w-2xl">
+          <p className="text-sm uppercase tracking-[3px] text-gray-400">
             Explore Our Range
           </p>
-          <h1 className="text-5xl md:text-7xl font-light mb-6">
+          <Title>
             Curated <span className="text-emerald-500">Collections</span>
-          </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          </Title>
+          <p className="text-gray-600 text-lg">
             Each collection tells a unique story. Find the perfect pair that
             matches your lifestyle and personality.
           </p>
         </div>
 
         {/* Collections Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20 mb-16">
           {COLLECTIONS.map((collection, index) => {
             const isHovered = hoveredId === collection.id;
 

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { REVIEWS_DATA } from "./demo-data";
+import Title from "@/components/ui/title";
 
 export default function Reviews() {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
@@ -9,16 +10,16 @@ export default function Reviews() {
     <section className="py-24 container">
       {/* Header */}
       <div className="text-center mb-20">
-        <p className="text-sm uppercase tracking-[3px] text-gray-400 mb-4">
+        <p className="text-sm uppercase tracking-[3px] text-gray-400">
           Testimonials
         </p>
-        <h2 className="text-5xl md:text-6xl font-light">
+        <Title className="mt-2">
           What Our <span className="text-emerald-500">Customers</span> Say
-        </h2>
+        </Title>
       </div>
 
       {/* Reviews Grid */}
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-4 gap-6 mt-12">
         {REVIEWS_DATA.map((review) => {
           const isHovered = hoveredId === review.id;
 

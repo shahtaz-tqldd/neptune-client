@@ -17,6 +17,7 @@ import {
 import { cn } from "@/lib/utils";
 import { PRODUCT_DATA } from "./demo-data";
 import Button from "@/components/buttons/primary-button";
+import Title from "@/components/ui/title";
 
 // Image Gallery Component
 interface ImageGalleryProps {
@@ -370,7 +371,7 @@ const ProductDetailsPage = () => {
             </div>
 
             {/* Product Title */}
-            <h2 className="text-gray-900 leading-tight">{PRODUCT_DATA.name}</h2>
+            <Title>{PRODUCT_DATA.name}</Title>
           </div>
 
           {/* Rating and Reviews */}

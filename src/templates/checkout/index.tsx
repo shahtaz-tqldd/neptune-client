@@ -22,6 +22,7 @@ import {
   UserIcon,
   WorldIcon,
 } from "@/assets/algo-icons";
+import Title from "@/components/ui/title";
 
 interface CartItem {
   id: string;
@@ -105,7 +106,7 @@ const CheckoutPage: React.FC = () => {
         {/* Header */}
         <div className="flbx mb-12">
           <div className="">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Checkout</h2>
+            <Title>Checkout</Title>
             <p className="text-gray-600">
               Complete your order in just a few steps
             </p>

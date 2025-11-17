@@ -134,7 +134,7 @@ export default function ChatAssistance() {
                 className={`max-w-[75%] p-3 text-sm rounded-xl ${
                   m.sender === "user"
                     ? "bg-primary text-white rounded-br-sm"
-                    : "bg-primary/15 text-gray-800 rounded-bl-sm shadow-sm"
+                    : "bg-primary/10 text-primary rounded-bl-sm"
                 }`}
               >
                 {m.text}

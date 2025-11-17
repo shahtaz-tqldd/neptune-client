@@ -1,3 +1,4 @@
+import Title from "@/components/ui/title";
 import React from "react";
 
 export default function AboutStory() {
@@ -39,10 +40,10 @@ export default function AboutStory() {
           </div>
 
           {/* Heading */}
-          <h2 className="text-5xl md:text-6xl font-light leading-tight">
+          <Title>
             Crafting <span className="text-emerald-500">Excellence</span> Since
             Day One
-          </h2>
+          </Title>
 
           {/* Story Content */}
           <div className="space-y-6 text-gray-600 text-lg leading-relaxed">

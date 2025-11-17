@@ -9,11 +9,12 @@ import { cn } from "@/lib/utils";
 import type { ProductProps } from "../types";
 import Link from "next/link";
 import { productName } from "@/lib/sanitize";
-import { Cart, CartPlusIcon } from "@/assets/algo-icons";
+import { CartPlusIcon } from "@/assets/algo-icons";
 
 interface ProductCardProps {
   product: ProductProps;
   size?: "sm" | "md";
+  isLanding?: boolean;
 }
 
 const sizeStyles = {
@@ -33,7 +34,11 @@ const sizeStyles = {
   },
 };
 
-const ProductCard = ({ product, size = "md" }: ProductCardProps) => {
+const ProductCard = ({
+  product,
+  size = "md",
+  isLanding = false,
+}: ProductCardProps) => {
   const styles = sizeStyles[size];
 
   const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -47,7 +52,7 @@ const ProductCard = ({ product, size = "md" }: ProductCardProps) => {
       <div
         className={cn(
           "relative w-full mb-4 overflow-hidden rounded-2xl",
-          styles.imageHeight
+          isLanding ? "h-[240px]" : styles.imageHeight
         )}
       >
         <Image

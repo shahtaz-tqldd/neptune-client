@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { faqData } from "./data";
+import Title from "@/components/ui/title";
 
 const Faqs: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number>(0);
@@ -14,11 +15,8 @@ const Faqs: React.FC = () => {
 
   return (
     <div className="container pt-10 pb-32 max-w-3xl mx-auto">
-      <h2 className="text-center text-3xl font-semibold mb-12">
-        Frequently Asked Questions
-      </h2>
-
-      <div className="space-y-4 max-w-3xl mx-auto">
+      <Title className="text-center">Frequently Asked Questions</Title>
+      <div className="space-y-4 max-w-3xl mx-auto mt-12">
         {faqData.map((faq, index) => {
           const isOpen = openIndex === index;
 

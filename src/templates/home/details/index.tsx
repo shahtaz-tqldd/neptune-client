@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 
 import { DETAILS_DATA } from "./demo-data";
+import Title from "@/components/ui/title";
 
 const Details = () => {
   const detailsData = DETAILS_DATA;
@@ -12,11 +13,11 @@ const Details = () => {
       <p className="uppercase tracking-[2px] text-lg text-center">
         Why choose us
       </p>
-      <h2 className="text-center mb-16 mt-4">
+      <Title className="mt-2 text-center">
         Details Down to <span className="text-emerald-500">Sneaker Level</span>
-      </h2>
+      </Title>
 
-      <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 relative z-10">
+      <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 relative z-10 mt-12">
         {detailsData.map((item, index) => (
           <div
             key={index}

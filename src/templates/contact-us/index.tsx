@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import IconButton from "@/components/buttons/icon-button";
 import { Facebook, Instagram, WhatsApp } from "@/assets/algo-icons";
+import Title from "@/components/ui/title";
 
 export default function ContactUsPage() {
   const [formData, setFormData] = useState({
@@ -36,21 +37,21 @@ export default function ContactUsPage() {
     <div className="min-h-screen pt-32 px-6">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-20">
-          <p className="text-sm uppercase tracking-[3px] text-gray-400 mb-4">
+        <div className="text-center max-w-2xl flex flex-col items-center gap-4 mx-auto">
+          <p className="text-sm uppercase tracking-[3px] text-gray-400">
             Get in Touch
           </p>
-          <h1 className="text-5xl md:text-6xl font-light mb-6">
+          <Title>
             We'd <span className="text-emerald-500">Love to Hear</span> From You
-          </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          </Title>
+          <p className="text-gray-600 text-lg">
             Have a question about our products or need assistance? Our team is
             here to help you every step of the way.
           </p>
         </div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-20">
           {/* Contact Info Sidebar */}
           <div className="space-y-8">
             <div>

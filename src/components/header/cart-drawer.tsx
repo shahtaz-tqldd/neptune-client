@@ -12,6 +12,7 @@ import {
 import Image from "next/image";
 import Button from "../buttons/primary-button";
 import { DEMO_PRODUCTS } from "@/templates/product-details/demo-data";
+import Title from "../ui/title";
 
 const mockCart = DEMO_PRODUCTS.slice(6, 9);
 
@@ -21,7 +22,7 @@ export default function CartDrawer({ open, setOpen }: any) {
       <DrawerContent className="right-0 left-auto !max-w-[420px] w-full rounded-none border-l border-l-primary/10">
         <DrawerHeader>
           <DrawerTitle></DrawerTitle>
-          <h3>Your Cart</h3>
+          <Title variant="sm">Your Cart</Title>
           <DrawerDescription>Items you’ve added to cart</DrawerDescription>
         </DrawerHeader>
 

@@ -1,40 +1,58 @@
+"use client";
 import React from "react";
-
 import NavigateButton from "@/components/buttons/navigate-button";
 import TrendingProductCard from "./trending-product-card";
-
 import { DEMO_PRODUCTS } from "@/templates/product-details/demo-data";
+import Title from "@/components/ui/title";
 
 const Trending = () => {
   const products = DEMO_PRODUCTS.slice(5, 8);
 
   return (
-    <section className="container pt-24 pb-36">
-      <div className="grid grid-cols-5 items-center">
-        {/* Left: Product Cards */}
-        <div className="col-span-3 relative h-[500px]">
-          {products.map((product, index) => (
-            <TrendingProductCard 
-              key={index} 
-              index={index}
-              product={product} 
-            />
-          ))}
+    <section className="container pt-16 md:pt-24 pb-20 md:pb-36">
+      <div className="grid grid-cols-1 md:grid-cols-5 items-center gap-12 md:gap-0">
+        {/* Product Cards */}
+        <div className="col-span-3 relative h-auto md:h-[500px] flex md:block justify-center gap-6 md:gap-0">
+          {/* Mobile = stacked cards */}
+          {/* Desktop = original absolute positioned layered cards */}
+          <div className="relative w-full max-w-full hidden md:block h-[500px]">
+            {products.map((product, index) => (
+              <TrendingProductCard
+                key={index}
+                index={index}
+                product={product}
+              />
+            ))}
+          </div>
+
+          {/* Mobile stacked version */}
+          <div className="flex flex-col gap-6 md:hidden">
+            {products.map((product, index) => (
+              <TrendingProductCard
+                key={"m-" + index}
+                index={-1} // disable absolute layout
+                product={product}
+              />
+            ))}
+          </div>
         </div>
 
-        {/* Right: Title */}
-        <div className="col-span-2 space-y-8">
+        {/* Right Side */}
+        <div className="col-span-2 space-y-6 md:space-y-8 text-center md:text-left">
           <p className="uppercase font-medium tracking-[2px]">
             pick the bestseller
           </p>
-          <h1 className="max-w-lg">
-            Discover Our <span className="text-emerald-500">Trending</span> Shoes
-          </h1>
-          <p className="text-2xl">
+          <Title>
+            Discover Our <span className="text-emerald-500">Trending</span>{" "}
+            Shoes
+          </Title>
+          <p className="text-xl md:text-2xl max-w-md mx-auto md:mx-0">
             Our latest collection combines comfort and cutting-edge design. Step
             up your style game with these top picks.
           </p>
-          <NavigateButton className="mt-24">Explore More</NavigateButton>
+          <NavigateButton className="mt-8 md:mt-24 mx-auto md:mx-0">
+            Explore More
+          </NavigateButton>
         </div>
       </div>
     </section>
